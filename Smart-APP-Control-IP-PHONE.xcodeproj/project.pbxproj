@@ -1,0 +1,312 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		67A797B91E668C4A00C9F19E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A797B81E668C4A00C9F19E /* AppDelegate.swift */; };
+		67A797BB1E668C4A00C9F19E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A797BA1E668C4A00C9F19E /* ViewController.swift */; };
+		67A797BE1E668C4A00C9F19E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67A797BC1E668C4A00C9F19E /* Main.storyboard */; };
+		67A797C01E668C4A00C9F19E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67A797BF1E668C4A00C9F19E /* Assets.xcassets */; };
+		67A797C31E668C4A00C9F19E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67A797C11E668C4A00C9F19E /* LaunchScreen.storyboard */; };
+		67A797CB1E66959C00C9F19E /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 67A797CA1E66959C00C9F19E /* README.md */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		67A797B51E668C4A00C9F19E /* Smart-APP-Control-IP-PHONE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smart-APP-Control-IP-PHONE.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		67A797B81E668C4A00C9F19E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		67A797BA1E668C4A00C9F19E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		67A797BD1E668C4A00C9F19E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		67A797BF1E668C4A00C9F19E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		67A797C21E668C4A00C9F19E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		67A797C41E668C4A00C9F19E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		67A797CA1E66959C00C9F19E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		67A797B21E668C4A00C9F19E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		67A797AC1E668C4A00C9F19E = {
+			isa = PBXGroup;
+			children = (
+				67A797CA1E66959C00C9F19E /* README.md */,
+				67A797B71E668C4A00C9F19E /* Smart-APP-Control-IP-PHONE */,
+				67A797B61E668C4A00C9F19E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		67A797B61E668C4A00C9F19E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				67A797B51E668C4A00C9F19E /* Smart-APP-Control-IP-PHONE.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		67A797B71E668C4A00C9F19E /* Smart-APP-Control-IP-PHONE */ = {
+			isa = PBXGroup;
+			children = (
+				67A797B81E668C4A00C9F19E /* AppDelegate.swift */,
+				67A797BA1E668C4A00C9F19E /* ViewController.swift */,
+				67A797BC1E668C4A00C9F19E /* Main.storyboard */,
+				67A797BF1E668C4A00C9F19E /* Assets.xcassets */,
+				67A797C11E668C4A00C9F19E /* LaunchScreen.storyboard */,
+				67A797C41E668C4A00C9F19E /* Info.plist */,
+			);
+			path = "Smart-APP-Control-IP-PHONE";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		67A797B41E668C4A00C9F19E /* Smart-APP-Control-IP-PHONE */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67A797C71E668C4A00C9F19E /* Build configuration list for PBXNativeTarget "Smart-APP-Control-IP-PHONE" */;
+			buildPhases = (
+				67A797B11E668C4A00C9F19E /* Sources */,
+				67A797B21E668C4A00C9F19E /* Frameworks */,
+				67A797B31E668C4A00C9F19E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Smart-APP-Control-IP-PHONE";
+			productName = "Smart-APP-Control-IP-PHONE";
+			productReference = 67A797B51E668C4A00C9F19E /* Smart-APP-Control-IP-PHONE.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		67A797AD1E668C4A00C9F19E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = Cisco;
+				TargetAttributes = {
+					67A797B41E668C4A00C9F19E = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 9HVCBEH34A;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 67A797B01E668C4A00C9F19E /* Build configuration list for PBXProject "Smart-APP-Control-IP-PHONE" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 67A797AC1E668C4A00C9F19E;
+			productRefGroup = 67A797B61E668C4A00C9F19E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				67A797B41E668C4A00C9F19E /* Smart-APP-Control-IP-PHONE */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		67A797B31E668C4A00C9F19E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67A797C31E668C4A00C9F19E /* LaunchScreen.storyboard in Resources */,
+				67A797C01E668C4A00C9F19E /* Assets.xcassets in Resources */,
+				67A797BE1E668C4A00C9F19E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		67A797B11E668C4A00C9F19E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67A797CB1E66959C00C9F19E /* README.md in Sources */,
+				67A797BB1E668C4A00C9F19E /* ViewController.swift in Sources */,
+				67A797B91E668C4A00C9F19E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		67A797BC1E668C4A00C9F19E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				67A797BD1E668C4A00C9F19E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		67A797C11E668C4A00C9F19E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				67A797C21E668C4A00C9F19E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		67A797C51E668C4A00C9F19E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		67A797C61E668C4A00C9F19E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		67A797C81E668C4A00C9F19E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9HVCBEH34A;
+				INFOPLIST_FILE = "Smart-APP-Control-IP-PHONE/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cisco.Smart-APP-Control-IP-PHONE";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		67A797C91E668C4A00C9F19E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9HVCBEH34A;
+				INFOPLIST_FILE = "Smart-APP-Control-IP-PHONE/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cisco.Smart-APP-Control-IP-PHONE";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		67A797B01E668C4A00C9F19E /* Build configuration list for PBXProject "Smart-APP-Control-IP-PHONE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67A797C51E668C4A00C9F19E /* Debug */,
+				67A797C61E668C4A00C9F19E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67A797C71E668C4A00C9F19E /* Build configuration list for PBXNativeTarget "Smart-APP-Control-IP-PHONE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67A797C81E668C4A00C9F19E /* Debug */,
+				67A797C91E668C4A00C9F19E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 67A797AD1E668C4A00C9F19E /* Project object */;
+}
