@@ -8,22 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		67A797B91E668C4A00C9F19E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A797B81E668C4A00C9F19E /* AppDelegate.swift */; };
-		67A797BB1E668C4A00C9F19E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A797BA1E668C4A00C9F19E /* ViewController.swift */; };
 		67A797BE1E668C4A00C9F19E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67A797BC1E668C4A00C9F19E /* Main.storyboard */; };
 		67A797C01E668C4A00C9F19E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67A797BF1E668C4A00C9F19E /* Assets.xcassets */; };
 		67A797C31E668C4A00C9F19E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67A797C11E668C4A00C9F19E /* LaunchScreen.storyboard */; };
 		67A797CB1E66959C00C9F19E /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 67A797CA1E66959C00C9F19E /* README.md */; };
+		67A797CD1E6708E000C9F19E /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A797CC1E6708E000C9F19E /* KeyboardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		67A797B51E668C4A00C9F19E /* Smart-APP-Control-IP-PHONE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smart-APP-Control-IP-PHONE.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67A797B81E668C4A00C9F19E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		67A797BA1E668C4A00C9F19E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		67A797BD1E668C4A00C9F19E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		67A797BF1E668C4A00C9F19E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		67A797C21E668C4A00C9F19E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		67A797C41E668C4A00C9F19E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		67A797CA1E66959C00C9F19E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		67A797CC1E6708E000C9F19E /* KeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +58,11 @@
 			isa = PBXGroup;
 			children = (
 				67A797B81E668C4A00C9F19E /* AppDelegate.swift */,
-				67A797BA1E668C4A00C9F19E /* ViewController.swift */,
 				67A797BC1E668C4A00C9F19E /* Main.storyboard */,
 				67A797BF1E668C4A00C9F19E /* Assets.xcassets */,
 				67A797C11E668C4A00C9F19E /* LaunchScreen.storyboard */,
 				67A797C41E668C4A00C9F19E /* Info.plist */,
+				67A797CC1E6708E000C9F19E /* KeyboardViewController.swift */,
 			);
 			path = "Smart-APP-Control-IP-PHONE";
 			sourceTree = "<group>";
@@ -141,7 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67A797CB1E66959C00C9F19E /* README.md in Sources */,
-				67A797BB1E668C4A00C9F19E /* ViewController.swift in Sources */,
+				67A797CD1E6708E000C9F19E /* KeyboardViewController.swift in Sources */,
 				67A797B91E668C4A00C9F19E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
