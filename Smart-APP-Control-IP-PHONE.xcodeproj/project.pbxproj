@@ -13,6 +13,7 @@
 		67A797C31E668C4A00C9F19E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67A797C11E668C4A00C9F19E /* LaunchScreen.storyboard */; };
 		67A797CB1E66959C00C9F19E /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 67A797CA1E66959C00C9F19E /* README.md */; };
 		67A797CD1E6708E000C9F19E /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A797CC1E6708E000C9F19E /* KeyboardViewController.swift */; };
+		67A797CF1E67249300C9F19E /* VoiceRecognitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A797CE1E67249300C9F19E /* VoiceRecognitionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		67A797C41E668C4A00C9F19E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		67A797CA1E66959C00C9F19E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		67A797CC1E6708E000C9F19E /* KeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		67A797CE1E67249300C9F19E /* VoiceRecognitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceRecognitionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				67A797C11E668C4A00C9F19E /* LaunchScreen.storyboard */,
 				67A797C41E668C4A00C9F19E /* Info.plist */,
 				67A797CC1E6708E000C9F19E /* KeyboardViewController.swift */,
+				67A797CE1E67249300C9F19E /* VoiceRecognitionViewController.swift */,
 			);
 			path = "Smart-APP-Control-IP-PHONE";
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67A797CB1E66959C00C9F19E /* README.md in Sources */,
+				67A797CF1E67249300C9F19E /* VoiceRecognitionViewController.swift in Sources */,
 				67A797CD1E6708E000C9F19E /* KeyboardViewController.swift in Sources */,
 				67A797B91E668C4A00C9F19E /* AppDelegate.swift in Sources */,
 			);
