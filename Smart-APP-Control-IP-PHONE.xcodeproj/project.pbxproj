@@ -14,6 +14,11 @@
 		67A797CB1E66959C00C9F19E /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 67A797CA1E66959C00C9F19E /* README.md */; };
 		67A797CD1E6708E000C9F19E /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A797CC1E6708E000C9F19E /* KeyboardViewController.swift */; };
 		67A797CF1E67249300C9F19E /* VoiceRecognitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A797CE1E67249300C9F19E /* VoiceRecognitionViewController.swift */; };
+		67A797D41E67C07600C9F19E /* AcousticModelEnglish.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 67A797D11E67C07600C9F19E /* AcousticModelEnglish.bundle */; };
+		67A797D51E67C07600C9F19E /* OpenEars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A797D21E67C07600C9F19E /* OpenEars.framework */; };
+		67A797D61E67C07600C9F19E /* Slt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A797D31E67C07600C9F19E /* Slt.framework */; };
+		67A797D91E67C2D200C9F19E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A797D81E67C2D200C9F19E /* AudioToolbox.framework */; };
+		67A797DB1E67C2DC00C9F19E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A797DA1E67C2DC00C9F19E /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,12 @@
 		67A797CA1E66959C00C9F19E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		67A797CC1E6708E000C9F19E /* KeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		67A797CE1E67249300C9F19E /* VoiceRecognitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceRecognitionViewController.swift; sourceTree = "<group>"; };
+		67A797D11E67C07600C9F19E /* AcousticModelEnglish.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AcousticModelEnglish.bundle; sourceTree = "<group>"; };
+		67A797D21E67C07600C9F19E /* OpenEars.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenEars.framework; sourceTree = "<group>"; };
+		67A797D31E67C07600C9F19E /* Slt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Slt.framework; sourceTree = "<group>"; };
+		67A797D81E67C2D200C9F19E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		67A797DA1E67C2DC00C9F19E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		67A797DC1E67C4DF00C9F19E /* OpenEarsHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenEarsHeader.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +44,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67A797DB1E67C2DC00C9F19E /* AVFoundation.framework in Frameworks */,
+				67A797D91E67C2D200C9F19E /* AudioToolbox.framework in Frameworks */,
+				67A797D61E67C07600C9F19E /* Slt.framework in Frameworks */,
+				67A797D51E67C07600C9F19E /* OpenEars.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,9 +57,12 @@
 		67A797AC1E668C4A00C9F19E = {
 			isa = PBXGroup;
 			children = (
+				67A797DC1E67C4DF00C9F19E /* OpenEarsHeader.h */,
+				67A797D01E67C07600C9F19E /* Framework */,
 				67A797CA1E66959C00C9F19E /* README.md */,
 				67A797B71E668C4A00C9F19E /* Smart-APP-Control-IP-PHONE */,
 				67A797B61E668C4A00C9F19E /* Products */,
+				67A797D71E67C2D200C9F19E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,6 +86,25 @@
 				67A797CE1E67249300C9F19E /* VoiceRecognitionViewController.swift */,
 			);
 			path = "Smart-APP-Control-IP-PHONE";
+			sourceTree = "<group>";
+		};
+		67A797D01E67C07600C9F19E /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				67A797D11E67C07600C9F19E /* AcousticModelEnglish.bundle */,
+				67A797D21E67C07600C9F19E /* OpenEars.framework */,
+				67A797D31E67C07600C9F19E /* Slt.framework */,
+			);
+			path = Framework;
+			sourceTree = "<group>";
+		};
+		67A797D71E67C2D200C9F19E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				67A797DA1E67C2DC00C9F19E /* AVFoundation.framework */,
+				67A797D81E67C2D200C9F19E /* AudioToolbox.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67A797C31E668C4A00C9F19E /* LaunchScreen.storyboard in Resources */,
+				67A797D41E67C07600C9F19E /* AcousticModelEnglish.bundle in Resources */,
 				67A797C01E668C4A00C9F19E /* Assets.xcassets in Resources */,
 				67A797BE1E668C4A00C9F19E /* Main.storyboard in Resources */,
 			);
@@ -268,6 +306,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9HVCBEH34A;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Framework",
+				);
 				INFOPLIST_FILE = "Smart-APP-Control-IP-PHONE/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cisco.Smart-APP-Control-IP-PHONE";
@@ -281,6 +323,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9HVCBEH34A;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Framework",
+				);
 				INFOPLIST_FILE = "Smart-APP-Control-IP-PHONE/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cisco.Smart-APP-Control-IP-PHONE";
