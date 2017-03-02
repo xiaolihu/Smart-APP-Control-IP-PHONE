@@ -19,6 +19,10 @@
 		67A797D61E67C07600C9F19E /* Slt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A797D31E67C07600C9F19E /* Slt.framework */; };
 		67A797D91E67C2D200C9F19E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A797D81E67C2D200C9F19E /* AudioToolbox.framework */; };
 		67A797DB1E67C2DC00C9F19E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A797DA1E67C2DC00C9F19E /* AVFoundation.framework */; };
+		67A797E11E67D99900C9F19E /* BTAdvertise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A797DD1E67D99900C9F19E /* BTAdvertise.swift */; };
+		67A797E21E67D99900C9F19E /* BTDiscovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A797DE1E67D99900C9F19E /* BTDiscovery.swift */; };
+		67A797E31E67D99900C9F19E /* BTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A797DF1E67D99900C9F19E /* BTService.swift */; };
+		67A797E41E67D99900C9F19E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A797E01E67D99900C9F19E /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +41,10 @@
 		67A797D81E67C2D200C9F19E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		67A797DA1E67C2DC00C9F19E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		67A797DC1E67C4DF00C9F19E /* OpenEarsHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenEarsHeader.h; sourceTree = "<group>"; };
+		67A797DD1E67D99900C9F19E /* BTAdvertise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BTAdvertise.swift; path = ../src/BTAdvertise.swift; sourceTree = "<group>"; };
+		67A797DE1E67D99900C9F19E /* BTDiscovery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BTDiscovery.swift; path = ../src/BTDiscovery.swift; sourceTree = "<group>"; };
+		67A797DF1E67D99900C9F19E /* BTService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BTService.swift; path = ../src/BTService.swift; sourceTree = "<group>"; };
+		67A797E01E67D99900C9F19E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../src/ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +85,10 @@
 		67A797B71E668C4A00C9F19E /* Smart-APP-Control-IP-PHONE */ = {
 			isa = PBXGroup;
 			children = (
+				67A797DD1E67D99900C9F19E /* BTAdvertise.swift */,
+				67A797DE1E67D99900C9F19E /* BTDiscovery.swift */,
+				67A797DF1E67D99900C9F19E /* BTService.swift */,
+				67A797E01E67D99900C9F19E /* ViewController.swift */,
 				67A797B81E668C4A00C9F19E /* AppDelegate.swift */,
 				67A797BC1E668C4A00C9F19E /* Main.storyboard */,
 				67A797BF1E668C4A00C9F19E /* Assets.xcassets */,
@@ -185,6 +197,10 @@
 				67A797CF1E67249300C9F19E /* VoiceRecognitionViewController.swift in Sources */,
 				67A797CD1E6708E000C9F19E /* KeyboardViewController.swift in Sources */,
 				67A797B91E668C4A00C9F19E /* AppDelegate.swift in Sources */,
+				67A797E31E67D99900C9F19E /* BTService.swift in Sources */,
+				67A797E21E67D99900C9F19E /* BTDiscovery.swift in Sources */,
+				67A797E41E67D99900C9F19E /* ViewController.swift in Sources */,
+				67A797E11E67D99900C9F19E /* BTAdvertise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
