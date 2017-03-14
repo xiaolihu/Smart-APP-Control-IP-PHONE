@@ -23,6 +23,8 @@
 		67A797E21E67D99900C9F19E /* BTDiscovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A797DE1E67D99900C9F19E /* BTDiscovery.swift */; };
 		67A797E31E67D99900C9F19E /* BTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A797DF1E67D99900C9F19E /* BTService.swift */; };
 		67A797E41E67D99900C9F19E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A797E01E67D99900C9F19E /* ViewController.swift */; };
+		9AD4AF0E1E77B75E00E79BA6 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD4AF0D1E77B75E00E79BA6 /* Contact.swift */; };
+		9AD4AF101E77B76B00E79BA6 /* ContactListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD4AF0F1E77B76B00E79BA6 /* ContactListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		67A797DE1E67D99900C9F19E /* BTDiscovery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BTDiscovery.swift; path = ../src/BTDiscovery.swift; sourceTree = "<group>"; };
 		67A797DF1E67D99900C9F19E /* BTService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BTService.swift; path = ../src/BTService.swift; sourceTree = "<group>"; };
 		67A797E01E67D99900C9F19E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../src/ViewController.swift; sourceTree = "<group>"; };
+		9AD4AF0D1E77B75E00E79BA6 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		9AD4AF0F1E77B76B00E79BA6 /* ContactListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,8 @@
 		67A797B71E668C4A00C9F19E /* Smart-APP-Control-IP-PHONE */ = {
 			isa = PBXGroup;
 			children = (
+				9AD4AF0F1E77B76B00E79BA6 /* ContactListTableViewController.swift */,
+				9AD4AF0D1E77B75E00E79BA6 /* Contact.swift */,
 				67A797DD1E67D99900C9F19E /* BTAdvertise.swift */,
 				67A797DE1E67D99900C9F19E /* BTDiscovery.swift */,
 				67A797DF1E67D99900C9F19E /* BTService.swift */,
@@ -193,6 +199,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AD4AF0E1E77B75E00E79BA6 /* Contact.swift in Sources */,
 				67A797CB1E66959C00C9F19E /* README.md in Sources */,
 				67A797CF1E67249300C9F19E /* VoiceRecognitionViewController.swift in Sources */,
 				67A797CD1E6708E000C9F19E /* KeyboardViewController.swift in Sources */,
@@ -200,6 +207,7 @@
 				67A797E31E67D99900C9F19E /* BTService.swift in Sources */,
 				67A797E21E67D99900C9F19E /* BTDiscovery.swift in Sources */,
 				67A797E41E67D99900C9F19E /* ViewController.swift in Sources */,
+				9AD4AF101E77B76B00E79BA6 /* ContactListTableViewController.swift in Sources */,
 				67A797E11E67D99900C9F19E /* BTAdvertise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
