@@ -40,45 +40,39 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         
         let languageModelGenerator = OELanguageModelGenerator()
         
-        let firstLanguageArray = ["backward",
-                                  "change",
-                                  "forward",
-                                  "go",
-                                  "left",
-                                  "model",
-                                  "right",
-                                  "turn"]
+        let firstLanguageArray = ["Chuck Wang",
+                                  "Xiaolin Huang",
+                                  "Zhaocai Wang",
+                                  "Javen Chen",
+                                  "Xuebin Liang",
+                                  "Xingcai Gu",
+                                  "change model"]
         
-        let firstVocabularyName = "FirstVocabulary"
+        let ContactName = "ContactName"
         
-        let firstLanguageModelGenerationError: Error! = languageModelGenerator.generateLanguageModel(from: firstLanguageArray, withFilesNamed: firstVocabularyName, forAcousticModelAtPath: OEAcousticModel.path(toModel: "AcousticModelEnglish"))
+        let firstLanguageModelGenerationError: Error! = languageModelGenerator.generateLanguageModel(from: firstLanguageArray, withFilesNamed: ContactName, forAcousticModelAtPath: OEAcousticModel.path(toModel: "AcousticModelEnglish"))
         
         if(firstLanguageModelGenerationError != nil) {
             print("Error while creating initial language model: \(firstLanguageModelGenerationError)")
         } else {
-            self.pathToFirstDynamicallyGeneratedLanguageModel = languageModelGenerator.pathToSuccessfullyGeneratedLanguageModel(withRequestedName: firstVocabularyName)
-            self.pathToFirstDynamicallyGeneratedDictionary = languageModelGenerator.pathToSuccessfullyGeneratedDictionary(withRequestedName: firstVocabularyName)
+            self.pathToFirstDynamicallyGeneratedLanguageModel = languageModelGenerator.pathToSuccessfullyGeneratedLanguageModel(withRequestedName: ContactName)
+            self.pathToFirstDynamicallyGeneratedDictionary = languageModelGenerator.pathToSuccessfullyGeneratedDictionary(withRequestedName: ContactName)
             self.usingStartingLanguageModel = true
             
-            let secondVocabularyName = "SecondVocabulary"
+            let Operation = "Operation"
             
-            let secondLanguageArray = ["Sunday",
-                                       "Monday",
-                                       "Tuesday",
-                                       "Wednesday",
-                                       "Thursday",
-                                       "Friday",
-                                       "Saturday",
-                                       "quidnunc",
+            let secondLanguageArray = ["Search",
+                                       "Dail",
+                                       "Hangup",
                                        "change model"]
             
-            let secondLanguageModelGenerationError: Error! = languageModelGenerator.generateLanguageModel(from: secondLanguageArray, withFilesNamed: secondVocabularyName, forAcousticModelAtPath: OEAcousticModel.path(toModel: "AcousticModelEnglish"))
+            let secondLanguageModelGenerationError: Error! = languageModelGenerator.generateLanguageModel(from: secondLanguageArray, withFilesNamed: Operation, forAcousticModelAtPath: OEAcousticModel.path(toModel: "AcousticModelEnglish"))
             
             if(secondLanguageModelGenerationError != nil) {
                 print("Error while creating second language model: \(secondLanguageModelGenerationError)")
             } else {
-                self.pathToSecondDynamicallyGeneratedLanguageModel = languageModelGenerator.pathToSuccessfullyGeneratedLanguageModel(withRequestedName: secondVocabularyName)
-                self.pathToSecondDynamicallyGeneratedDictionary = languageModelGenerator.pathToSuccessfullyGeneratedDictionary(withRequestedName: secondVocabularyName)
+                self.pathToSecondDynamicallyGeneratedLanguageModel = languageModelGenerator.pathToSuccessfullyGeneratedLanguageModel(withRequestedName: Operation)
+                self.pathToSecondDynamicallyGeneratedDictionary = languageModelGenerator.pathToSuccessfullyGeneratedDictionary(withRequestedName: Operation)
                 
                 do {
                     try OEPocketsphinxController.sharedInstance().setActive(true)
@@ -112,6 +106,16 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
                 OEPocketsphinxController.sharedInstance().changeLanguageModel(toFile: self.pathToFirstDynamicallyGeneratedLanguageModel, withDictionary:self.pathToFirstDynamicallyGeneratedDictionary)
                 self.usingStartingLanguageModel = true
             }
+        }
+        
+        // print("#### \(hypothesis!) ####")
+        
+        // to set contact name
+        Shared.shared.contactName = hypothesis!
+        
+        // to get contact name from other view controller
+        if let value = Shared.shared.contactName {
+            print("#### \(value) ####")
         }
         
         self.heardTextView.text = "Heard: \"\(hypothesis!)\""
