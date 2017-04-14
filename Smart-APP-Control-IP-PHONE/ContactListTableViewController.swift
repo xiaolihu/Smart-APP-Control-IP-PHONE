@@ -12,6 +12,7 @@ class ContactListTableViewController: UITableViewController {
     private var contactList = Array<Contact>() {
         didSet {
             tableView.reloadData()
+            storeContactList()
         }
     }
     
@@ -20,7 +21,7 @@ class ContactListTableViewController: UITableViewController {
         super.viewDidLoad()
         
         if let arrayOfObjectsUnarchivedData = UserDefaults.standard.data(forKey: "ContactListKey") {
-            var arrayOfObjectsUnarchived = NSKeyedUnarchiver.unarchiveObject(with: arrayOfObjectsUnarchivedData) as! Array<Contact>
+            let arrayOfObjectsUnarchived = NSKeyedUnarchiver.unarchiveObject(with: arrayOfObjectsUnarchivedData) as! Array<Contact>
             if arrayOfObjectsUnarchived.count > 0 {
                 contactList = arrayOfObjectsUnarchived
             } else {
@@ -61,17 +62,22 @@ class ContactListTableViewController: UITableViewController {
      }
      */
     
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
+    
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tableView.beginUpdates()
+            // Delete the row from the data source
+            contactList.remove(at: indexPath.row)
+            print(indexPath.section)
+            print(indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.endUpdates()
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
+    
     
     /*
      // Override to support rearranging the table view.
@@ -99,7 +105,7 @@ class ContactListTableViewController: UITableViewController {
      */
     
     @IBAction func AddContact(_ sender: UIBarButtonItem) {
-        var alert = UIAlertController(title: "Add Contact", message: "Please add contact name and phone number", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Add Contact", message: "Please add contact name and phone number", preferredStyle: .alert)
         alert.addAction(UIAlertAction(
             title: "Cancel",
             style: .cancel)
@@ -115,16 +121,7 @@ class ContactListTableViewController: UITableViewController {
             if let tf = alert.textFields  {                          // Alert中输入
                 if let cn = tf[0].text, !cn.isEmpty {
                     let pn = tf[1].text
-                    print(cn)
-                    print(pn)
                     self.contactList.append(Contact(contactName: cn, telephonyNumber: pn!))
-                    let defaults = UserDefaults.standard
-                    let arrayOfObjectsKey = "ContactListKey"
-                    
-                    let arrayOfObjectsData = NSKeyedArchiver.archivedData(withRootObject: self.contactList)
-                    
-                    defaults.set(arrayOfObjectsData, forKey: arrayOfObjectsKey)
-                    defaults.synchronize()
                 }
             }
             }
@@ -136,5 +133,15 @@ class ContactListTableViewController: UITableViewController {
             textField.placeholder = "Phone Number"
         }
         present(alert, animated: true, completion: nil)
+    }
+    
+    private func storeContactList() {
+        let defaults = UserDefaults.standard
+        let arrayOfObjectsKey = "ContactListKey"
+        
+        let arrayOfObjectsData = NSKeyedArchiver.archivedData(withRootObject: self.contactList)
+        
+        defaults.set(arrayOfObjectsData, forKey: arrayOfObjectsKey)
+        defaults.synchronize()
     }
 }
