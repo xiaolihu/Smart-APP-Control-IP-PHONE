@@ -19,8 +19,16 @@ class ContactListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        contactList.append(Contact(contactName: "Zhaocai Wang", telephonyNumber: "123-456-7890"))
-        contactList.append(Contact(contactName: "Javen Chen", telephonyNumber: "123-456-7891"))
+        if let arrayOfObjectsUnarchivedData = UserDefaults.standard.data(forKey: "ContactListKey") {
+            var arrayOfObjectsUnarchived = NSKeyedUnarchiver.unarchiveObject(with: arrayOfObjectsUnarchivedData) as! Array<Contact>
+            if arrayOfObjectsUnarchived.count > 0 {
+                contactList = arrayOfObjectsUnarchived
+            } else {
+                contactList.append(Contact(contactName: "Zhaocai Wang", telephonyNumber: "123-456-7890"))
+                contactList.append(Contact(contactName: "Javen Chen", telephonyNumber: "123-456-7891"))
+            }
+            print(arrayOfObjectsUnarchived)
+        }
         
         self.navigationItem.title = "Contact List"
         // Uncomment the following line to preserve selection between presentations
@@ -110,6 +118,13 @@ class ContactListTableViewController: UITableViewController {
                     print(cn)
                     print(pn)
                     self.contactList.append(Contact(contactName: cn, telephonyNumber: pn!))
+                    let defaults = UserDefaults.standard
+                    let arrayOfObjectsKey = "ContactListKey"
+                    
+                    let arrayOfObjectsData = NSKeyedArchiver.archivedData(withRootObject: self.contactList)
+                    
+                    defaults.set(arrayOfObjectsData, forKey: arrayOfObjectsKey)
+                    defaults.synchronize()
                 }
             }
             }
