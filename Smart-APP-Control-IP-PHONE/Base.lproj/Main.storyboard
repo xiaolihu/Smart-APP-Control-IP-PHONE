@@ -80,7 +80,7 @@
             </objects>
             <point key="canvasLocation" x="2248.8000000000002" y="652.62368815592208"/>
         </scene>
-        <!--Contact List Table View Controller-->
+        <!--Title-->
         <scene sceneID="RYM-UN-Wbv">
             <objects>
                 <tableViewController id="ApR-gv-pSe" customClass="ContactListTableViewController" customModule="Smart_APP_Control_IP_PHONE" customModuleProvider="target" sceneMemberID="viewController">
@@ -93,18 +93,18 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nHh-C3-y2M" id="Mvn-wG-vSP">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="s86-sU-Xf9">
-                                            <rect key="frame" x="15" y="11" width="34" height="21"/>
+                                            <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="w2a-P8-dg3">
-                                            <rect key="frame" x="301" y="11" width="59" height="21"/>
+                                            <rect key="frame" x="301" y="12" width="59" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -119,6 +119,13 @@
                             <outlet property="delegate" destination="ApR-gv-pSe" id="AQe-Be-kU8"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="YI8-dJ-j9d">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="X9m-2k-taj">
+                            <connections>
+                                <action selector="AddContact:" destination="ApR-gv-pSe" id="wpK-BT-DVr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PvL-KF-dCp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
