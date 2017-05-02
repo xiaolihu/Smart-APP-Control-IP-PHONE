@@ -9,6 +9,7 @@
 import Foundation
 import CoreBluetooth
 
+//let searchAllServicesUUID = CBUUID(string: nil)
 // ************************ To implement the central role with iPhone **********
 // 1. Start up a central manager object
 // 2. Discover and connect to peripheral devices that are advertising
@@ -35,7 +36,8 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate {
     }
     
     func centralStartSanning() {
-        centralManager?.scanForPeripherals(withServices: [localBLEServiceUUID], options: nil)
+        print("Starting to scan for services !")
+        centralManager?.scanForPeripherals(withServices: nil, options: nil)
     }
     
     // PS ********* CBCentralManagerDelegate **********
@@ -44,6 +46,7 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate {
                         didDiscover peripheral: CBPeripheral,
                         advertisementData: [String : Any],
                         rssi RSSI: NSNumber) {
+        print("Discovering peripheral: \(peripheral), RSSI: \(RSSI), advData: \(advertisementData)!")
         if (peripheral.name == nil) {
             return
         }
@@ -52,6 +55,7 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate {
             self.discoveredPeripheral = peripheral
         }
         
+        print("Trying to connect peripheral !")
         if (self.discoveredPeripheral?.state == CBPeripheralState.disconnected) {
             central.connect(peripheral, options: nil)
         }
@@ -59,7 +63,9 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate {
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         //
+        print("Connected to peripheral: \(peripheral) : \(peripheral.services)!")
         if (peripheral == self.discoveredPeripheral) {
+            print ("Start to create services !")
             self.gattBLEService = BTService(initWithPeripheral: peripheral)
         }
         
@@ -86,8 +92,10 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         switch central.state {
         case .poweredOff:
+            print("Bluetooth Off !")
             self.clearDevices()
         case .poweredOn:
+            print("Bluetooth on !")
             self.centralStartSanning()
         case .resetting:
             self.clearDevices()

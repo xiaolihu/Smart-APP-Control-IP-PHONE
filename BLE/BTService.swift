@@ -9,10 +9,13 @@
 import Foundation
 import CoreBluetooth
 
+//var gBleLinkStatus = false
+
 class BTService: NSObject, CBPeripheralDelegate {
     var peripheral: CBPeripheral?
     var speechTextCharacteristic: CBCharacteristic?
     var speechTextValue: Data?
+    var bleLinkStatus: Bool = false
     
     let uuidsForGATTCharacteristics: [CBUUID] = [speechTextCharacteristicUUID]
     
@@ -46,10 +49,12 @@ class BTService: NSObject, CBPeripheralDelegate {
         }
         
         if (peripheral.services == nil || peripheral.services?.count == 0) {
+            print("No Services Found !")
             return
         }
         
         for service in peripheral.services! {
+            print("Service \(service.uuid) found.")
             if service.uuid == localBLEServiceUUID {
                 peripheral.discoverCharacteristics(uuidsForGATTCharacteristics, for: service)
             }
@@ -70,6 +75,7 @@ class BTService: NSObject, CBPeripheralDelegate {
         // retrieve characteristics and subscribe it
         if let characteristics = service.characteristics {
             for characteristic in characteristics {
+                print("Characteristic \(characteristic.uuid)")
                 if characteristic.uuid == speechTextCharacteristicUUID {
                     self.speechTextCharacteristic = characteristic
                     
@@ -77,7 +83,10 @@ class BTService: NSObject, CBPeripheralDelegate {
                     
                     peripheral.setNotifyValue(true, for: characteristic)
                     
-                    self.updateBluetoothConnectionStatus()
+                    //gBleLinkStatus = true
+                    
+                    self.bleLinkStatus = true
+                    //self.updateBluetoothConnectionStatus()
                 }
             }
         }
@@ -100,7 +109,10 @@ class BTService: NSObject, CBPeripheralDelegate {
         }
     }
     
-    func updateBluetoothConnectionStatus () {
+    func updateBluetoothConnectionStatus () -> Bool{
+        print("Connected !")
+        
+        return self.bleLinkStatus
         // send 'Connected' or 'Disconnected' to view controller
     }
 }

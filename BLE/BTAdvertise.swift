@@ -9,8 +9,12 @@
 import Foundation
 import CoreBluetooth
 
-let localBLEServiceUUID = CBUUID(string: "55A65D57-B27C-4C7A-ADAA-6C6DE5813B04")
-let speechTextCharacteristicUUID = CBUUID(string: "534C89ED-19D1-4DA7-9572-DE9FED4A5FFD")
+//let localBLEServiceUUID = CBUUID(string: "55A65D57-B27C-4C7A-ADAA-6C6DE5813B04")
+let localBLEServiceUUID = CBUUID(string: "FF00")
+let speechTextCharacteristicUUID = CBUUID(string: "FF01")
+//let speechTextCharacteristicUUID = CBUUID(string: "48945A31-72A8-41DD-B2F9-B91B57A21F06")
+
+var speechTextContent = "Hello"
 
 // *********** Setting up iPhone as Peripheral ************
 // 1. Start up a peripheral manager object
@@ -26,17 +30,20 @@ class BTAdvertise: NSObject, CBPeripheralManagerDelegate {
     var peripheralMgr: CBPeripheralManager?
     // Set up characteristics 
     var speechTextCharacteristic: CBMutableCharacteristic
+    // 
+    //var speechText = "Hello Cisco"
     // init value of characteristics
-    var speechTextValue: Data? = nil  // who update it ? Speech Recognition (ASR) module ?
+
+    var speechTextValue: Data? = Data(base64Encoded: speechTextContent )   // who update it ? Speech Recognition (ASR) module ?
     //
     var peripheralService: CBMutableService?
     
     private let advertiseData: Dictionary<String, CBUUID>= [
-        "iPhone as Peripheral": speechTextCharacteristicUUID
+        "iPhone6 as Peripheral": speechTextCharacteristicUUID
     ]
     
     override init(){
-        self.speechTextCharacteristic = CBMutableCharacteristic.init(type: speechTextCharacteristicUUID, properties: CBCharacteristicProperties.write, value: speechTextValue, permissions: CBAttributePermissions.writeable)
+        self.speechTextCharacteristic = CBMutableCharacteristic.init(type: speechTextCharacteristicUUID, properties: CBCharacteristicProperties.read, value: speechTextValue, permissions: CBAttributePermissions.readable)
         
         self.peripheralService = CBMutableService.init(type: localBLEServiceUUID, primary: true)
         peripheralService?.characteristics = [speechTextCharacteristic]
@@ -82,11 +89,16 @@ class BTAdvertise: NSObject, CBPeripheralManagerDelegate {
         if((error) != nil) {
             print("Failed to start advertising \(error)!")
         }
+        
+        if(peripheral.isAdvertising) {
+            print ("iPhone advertising data")
+        }
     }
 
     // send Speech 'Text' to IP PHONE
     func peripheralManager(_ peripheralMgr: CBPeripheralManager,
                            didReceiveRead request: CBATTRequest) {
+        print("Read Request")
         
         if (peripheralMgr != self.peripheralMgr) {
             peripheralMgr.respond(to: request, withResult: CBATTError.requestNotSupported)
@@ -109,9 +121,10 @@ class BTAdvertise: NSObject, CBPeripheralManagerDelegate {
         }
     }
     
-    // a draft implementation
+    // a draft implementation for write request from client
     func peripheralManager(_ peripheral: CBPeripheralManager,
                            didReceiveWrite requests: [CBATTRequest]){
+        print("Write Request !")
         
         if (requests.first?.characteristic.uuid == speechTextCharacteristic.uuid) {
             speechTextCharacteristic.value = requests.first?.characteristic.value
@@ -125,7 +138,7 @@ class BTAdvertise: NSObject, CBPeripheralManagerDelegate {
     func peripheralManager(_ peripheral: CBPeripheralManager,
                            central: CBCentral,
                            didSubscribeTo characteristic: CBCharacteristic){
-        
+        print("Subscription !")
         let didSendValue = peripheral.updateValue(speechTextCharacteristic.value!, for: characteristic as! CBMutableCharacteristic , onSubscribedCentrals: nil)
         if(didSendValue) {
             print("update value successfully")

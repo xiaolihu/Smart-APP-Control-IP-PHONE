@@ -41,26 +41,78 @@ class ViewController: UIViewController {
     // BTAdvertise will make iPhone perform common peripheral role and start advertise its service.
     
     
-    
+    @IBOutlet weak var serverIPAddr: UITextField!
+
+    @IBAction func DismissKeyboard(_ sender: AnyObject) {
+        serverIPAddr.resignFirstResponder()
+    }
     @IBOutlet private weak var connectStatus: UILabel!
     
-    let btAdvertiseInstance = BTAdvertise() // perform common peripheral role
+    //var btAdvertiseInstance : BTAdvertise!// perform common peripheral role
     
-    let btDiscoveryInstance = BTDiscovery() // perform common central role
+    //var btDiscoveryInstance : BTDiscovery!// perform common central role
+    
+    var tcpServer = "10.74.37.187"
+    let port = 40000
+    var tcpCli: TCPClient?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //btDiscoveryInstance = BTDiscovery()
+        //btAdvertiseInstance = BTAdvertise()
+        connectStatus.text = "Diconnected"
+
+    }
     
     @IBAction private func turnOnSwitch(_ sender: UISwitch) {
         // start to discover service with UUID
         
-        if (sender.isOn) {
-            print( "Turn on" )
-            connectStatus.text = "Connected"
+        
+        if (sender.isOn){
+            print( "Connecting to server" )
+            
+            tcpServer = serverIPAddr.text!
+            tcpCli = TCPClient(address: tcpServer, port: Int32(port))
+            
+            switch tcpCli!.connect(timeout: 10) {
+            case .success:
+                print("Connected to host \(tcpCli?.address)")
+                connectStatus.text = "Connected"
+                if let response = sendRequest(string: "Dial 4242", using: tcpCli!) {
+                    print("Response: \(response)")
+                }
+            case .failure( _):
+                connectStatus.text = "Failed To Connect"
+            }
+        
+            
+            //sender.isOn = true
         } else {
-            print( "Turn off" )
+            print( "Close connection !" )
+            tcpCli?.close()
+            serverIPAddr.text = nil
             connectStatus.text = "Disconnected"
         }
     }
+
+    private func sendRequest(string: String, using client: TCPClient) -> String? {
+        print("Sending data ... ")
+        
+        switch client.send(string: string) {
+        case .success:
+            return readResponse(from: client)
+        case .failure( _):
+            print("Failed to send data...")
+            return nil
+        }
+    }
     
-    
+    private func readResponse(from client: TCPClient) -> String? {
+        guard let response = client.read(1024*10) else { return nil }
+        
+        return String(bytes: response, encoding: .utf8)
+    }
 
 }
 
