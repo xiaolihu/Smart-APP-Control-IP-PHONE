@@ -29,6 +29,9 @@ class ContactListTableViewController: UITableViewController {
                 contactList.append(Contact(contactName: "Javen Chen", telephonyNumber: "123-456-7891"))
             }
             print(arrayOfObjectsUnarchived)
+        } else {
+            contactList.append(Contact(contactName: "Zhaocai Wang", telephonyNumber: "123-456-7890"))
+            contactList.append(Contact(contactName: "Javen Chen", telephonyNumber: "123-456-7891"))
         }
         
         self.navigationItem.title = "Contact List"
