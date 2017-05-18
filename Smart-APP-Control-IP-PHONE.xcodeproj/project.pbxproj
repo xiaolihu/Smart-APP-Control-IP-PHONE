@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		673F40D21E9F6CC600E443BB /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673F40D11E9F6CC600E443BB /* Shared.swift */; };
+		6755B6A91EBADDFB00430959 /* BTAdvertise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6755B6A01EBADDFB00430959 /* BTAdvertise.swift */; };
+		6755B6AA1EBADDFB00430959 /* BTDiscovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6755B6A11EBADDFB00430959 /* BTDiscovery.swift */; };
+		6755B6AB1EBADDFB00430959 /* BTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6755B6A21EBADDFB00430959 /* BTService.swift */; };
+		6755B6AC1EBADDFB00430959 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6755B6A31EBADDFB00430959 /* ViewController.swift */; };
+		6755B6AD1EBADDFB00430959 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6755B6A51EBADDFB00430959 /* Result.swift */; };
+		6755B6AE1EBADDFB00430959 /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6755B6A61EBADDFB00430959 /* Socket.swift */; };
+		6755B6AF1EBADDFB00430959 /* TCPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6755B6A71EBADDFB00430959 /* TCPClient.swift */; };
+		6755B6B01EBADDFB00430959 /* tcpsocket.c in Sources */ = {isa = PBXBuildFile; fileRef = 6755B6A81EBADDFB00430959 /* tcpsocket.c */; };
 		67A797B91E668C4A00C9F19E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A797B81E668C4A00C9F19E /* AppDelegate.swift */; };
 		67A797BE1E668C4A00C9F19E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67A797BC1E668C4A00C9F19E /* Main.storyboard */; };
 		67A797C01E668C4A00C9F19E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67A797BF1E668C4A00C9F19E /* Assets.xcassets */; };
@@ -20,16 +28,20 @@
 		67A797D61E67C07600C9F19E /* Slt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A797D31E67C07600C9F19E /* Slt.framework */; };
 		67A797D91E67C2D200C9F19E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A797D81E67C2D200C9F19E /* AudioToolbox.framework */; };
 		67A797DB1E67C2DC00C9F19E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A797DA1E67C2DC00C9F19E /* AVFoundation.framework */; };
-		67A797E11E67D99900C9F19E /* BTAdvertise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A797DD1E67D99900C9F19E /* BTAdvertise.swift */; };
-		67A797E21E67D99900C9F19E /* BTDiscovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A797DE1E67D99900C9F19E /* BTDiscovery.swift */; };
-		67A797E31E67D99900C9F19E /* BTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A797DF1E67D99900C9F19E /* BTService.swift */; };
-		67A797E41E67D99900C9F19E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A797E01E67D99900C9F19E /* ViewController.swift */; };
 		9AD4AF0E1E77B75E00E79BA6 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD4AF0D1E77B75E00E79BA6 /* Contact.swift */; };
 		9AD4AF101E77B76B00E79BA6 /* ContactListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD4AF0F1E77B76B00E79BA6 /* ContactListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		673F40D11E9F6CC600E443BB /* Shared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
+		6755B6A01EBADDFB00430959 /* BTAdvertise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTAdvertise.swift; sourceTree = "<group>"; };
+		6755B6A11EBADDFB00430959 /* BTDiscovery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTDiscovery.swift; sourceTree = "<group>"; };
+		6755B6A21EBADDFB00430959 /* BTService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTService.swift; sourceTree = "<group>"; };
+		6755B6A31EBADDFB00430959 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6755B6A51EBADDFB00430959 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		6755B6A61EBADDFB00430959 /* Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
+		6755B6A71EBADDFB00430959 /* TCPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPClient.swift; sourceTree = "<group>"; };
+		6755B6A81EBADDFB00430959 /* tcpsocket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tcpsocket.c; sourceTree = "<group>"; };
 		67A797B51E668C4A00C9F19E /* Smart-APP-Control-IP-PHONE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smart-APP-Control-IP-PHONE.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67A797B81E668C4A00C9F19E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67A797BD1E668C4A00C9F19E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -45,10 +57,6 @@
 		67A797D81E67C2D200C9F19E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		67A797DA1E67C2DC00C9F19E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		67A797DC1E67C4DF00C9F19E /* OpenEarsHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenEarsHeader.h; sourceTree = "<group>"; };
-		67A797DD1E67D99900C9F19E /* BTAdvertise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BTAdvertise.swift; path = ../src/BTAdvertise.swift; sourceTree = "<group>"; };
-		67A797DE1E67D99900C9F19E /* BTDiscovery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BTDiscovery.swift; path = ../src/BTDiscovery.swift; sourceTree = "<group>"; };
-		67A797DF1E67D99900C9F19E /* BTService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BTService.swift; path = ../src/BTService.swift; sourceTree = "<group>"; };
-		67A797E01E67D99900C9F19E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../src/ViewController.swift; sourceTree = "<group>"; };
 		9AD4AF0D1E77B75E00E79BA6 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		9AD4AF0F1E77B76B00E79BA6 /* ContactListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,9 +76,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6755B69F1EBADDFB00430959 /* BLE */ = {
+			isa = PBXGroup;
+			children = (
+				6755B6A01EBADDFB00430959 /* BTAdvertise.swift */,
+				6755B6A11EBADDFB00430959 /* BTDiscovery.swift */,
+				6755B6A21EBADDFB00430959 /* BTService.swift */,
+				6755B6A31EBADDFB00430959 /* ViewController.swift */,
+			);
+			path = BLE;
+			sourceTree = "<group>";
+		};
+		6755B6A41EBADDFB00430959 /* socket */ = {
+			isa = PBXGroup;
+			children = (
+				6755B6A51EBADDFB00430959 /* Result.swift */,
+				6755B6A61EBADDFB00430959 /* Socket.swift */,
+				6755B6A71EBADDFB00430959 /* TCPClient.swift */,
+				6755B6A81EBADDFB00430959 /* tcpsocket.c */,
+			);
+			path = socket;
+			sourceTree = "<group>";
+		};
 		67A797AC1E668C4A00C9F19E = {
 			isa = PBXGroup;
 			children = (
+				6755B69F1EBADDFB00430959 /* BLE */,
+				6755B6A41EBADDFB00430959 /* socket */,
 				67A797DC1E67C4DF00C9F19E /* OpenEarsHeader.h */,
 				67A797D01E67C07600C9F19E /* Framework */,
 				67A797CA1E66959C00C9F19E /* README.md */,
@@ -93,10 +125,6 @@
 			children = (
 				9AD4AF0F1E77B76B00E79BA6 /* ContactListTableViewController.swift */,
 				9AD4AF0D1E77B75E00E79BA6 /* Contact.swift */,
-				67A797DD1E67D99900C9F19E /* BTAdvertise.swift */,
-				67A797DE1E67D99900C9F19E /* BTDiscovery.swift */,
-				67A797DF1E67D99900C9F19E /* BTService.swift */,
-				67A797E01E67D99900C9F19E /* ViewController.swift */,
 				67A797B81E668C4A00C9F19E /* AppDelegate.swift */,
 				67A797BC1E668C4A00C9F19E /* Main.storyboard */,
 				67A797BF1E668C4A00C9F19E /* Assets.xcassets */,
@@ -202,17 +230,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6755B6AC1EBADDFB00430959 /* ViewController.swift in Sources */,
 				9AD4AF0E1E77B75E00E79BA6 /* Contact.swift in Sources */,
+				6755B6AF1EBADDFB00430959 /* TCPClient.swift in Sources */,
 				67A797CB1E66959C00C9F19E /* README.md in Sources */,
+				6755B6AA1EBADDFB00430959 /* BTDiscovery.swift in Sources */,
+				6755B6AE1EBADDFB00430959 /* Socket.swift in Sources */,
 				67A797CF1E67249300C9F19E /* VoiceRecognitionViewController.swift in Sources */,
 				67A797CD1E6708E000C9F19E /* KeyboardViewController.swift in Sources */,
+				6755B6AD1EBADDFB00430959 /* Result.swift in Sources */,
 				67A797B91E668C4A00C9F19E /* AppDelegate.swift in Sources */,
-				67A797E31E67D99900C9F19E /* BTService.swift in Sources */,
-				67A797E21E67D99900C9F19E /* BTDiscovery.swift in Sources */,
-				67A797E41E67D99900C9F19E /* ViewController.swift in Sources */,
+				6755B6B01EBADDFB00430959 /* tcpsocket.c in Sources */,
 				9AD4AF101E77B76B00E79BA6 /* ContactListTableViewController.swift in Sources */,
+				6755B6A91EBADDFB00430959 /* BTAdvertise.swift in Sources */,
+				6755B6AB1EBADDFB00430959 /* BTService.swift in Sources */,
 				673F40D21E9F6CC600E443BB /* Shared.swift in Sources */,
-				67A797E11E67D99900C9F19E /* BTAdvertise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

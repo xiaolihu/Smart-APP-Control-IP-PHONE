@@ -27,8 +27,8 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
     @IBOutlet var startButton:UIButton!
     @IBOutlet var suspendListeningButton:UIButton!
     @IBOutlet var resumeListeningButton:UIButton!
-    @IBOutlet var statusTextView:UITextView!
     @IBOutlet var heardTextView:UITextView!
+    @IBOutlet var statusTextView:UITextView!
     @IBOutlet var pocketsphinxDbLabel:UILabel!
     @IBOutlet var fliteDbLabel:UILabel!
     
@@ -40,13 +40,12 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         
         let languageModelGenerator = OELanguageModelGenerator()
         
-        let firstLanguageArray = ["Chuck Wang",
-                                  "Xiaolin Huang",
-                                  "Zhaocai Wang",
-                                  "Javen Chen",
+        let firstLanguageArray = ["Wang Chuck",
+                                  "Huang Xiaolin",
+                                  "Wang Zhaocai",
+                                  "Chen Javen",
                                   "Xuebin Liang",
-                                  "Xingcai Gu",
-                                  "change model"]
+                                  "Gu Xingcai"]
         
         let ContactName = "ContactName"
         
@@ -84,12 +83,19 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
                 if(!OEPocketsphinxController.sharedInstance().isListening) {
                     OEPocketsphinxController.sharedInstance().startListeningWithLanguageModel(atPath: self.pathToFirstDynamicallyGeneratedLanguageModel, dictionaryAtPath: self.pathToFirstDynamicallyGeneratedDictionary, acousticModelAtPath: OEAcousticModel.path(toModel: "AcousticModelEnglish"), languageModelIsJSGF: false)
                 }
-                startDisplayingLevels()
+                //startDisplayingLevels()
                 
-                self.startButton.isHidden = true
+                if(OEPocketsphinxController.sharedInstance().isListening){
+                    let stopListeningError: Error! = OEPocketsphinxController.sharedInstance().stopListening()
+                    if(stopListeningError != nil) {
+                        print("Error while stopping listening in viewDidLoad: \(stopListeningError).")
+                    }
+                }
+                
+                self.startButton.isHidden = false
                 self.stopButton.isHidden = true
-                self.suspendListeningButton.isHidden = true
-                self.resumeListeningButton.isHidden = true
+                //self.suspendListeningButton.isHidden = true
+                //self.resumeListeningButton.isHidden = true
             }
         }
     }
@@ -108,24 +114,40 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
             }
         }
         
-        // print("#### \(hypothesis!) ####")
-        
         // to set contact name
         Shared.shared.contactName = hypothesis!
         
         // to get contact name from other view controller
-        if let value = Shared.shared.contactName {
-            print("#### \(value) ####")
+        if let contactName = Shared.shared.contactName {
+            print("#### \(contactName) ####")
         }
         
-        self.heardTextView.text = "Heard: \"\(hypothesis!)\""
+        self.heardTextView.text = "\"Call \(hypothesis!)\""
         
-        self.fliteController.say(_:"You said \(hypothesis!)", with:self.slt)
+        self.fliteController.say(_:"You will call \(hypothesis!)", with:self.slt)
+        
+        // Call Contact w/ TCP client socket
+        var tcpServer: String!
+        let port = 40000
+        var tcpCli: TCPClient?
+        
+        tcpServer = "10.74.37.187"
+        tcpCli = TCPClient(address: tcpServer, port: Int32(port))
+        
+        switch tcpCli!.connect(timeout: 10) {
+        case .success:
+            print("Connected to host \(tcpCli?.address)")
+            if let response = sendRequest(string: "Dial \(hypothesis!)", using: tcpCli!) {
+                print("Response: \(response)")
+            }
+        case .failure( _):
+            print("Failed To Connect")
+        }
     }
     
     func audioSessionInterruptionDidEnd() {
         print("Local callback:  AudioSession interruption ended.")
-        self.statusTextView.text = "Status: AudioSession interruption ended."
+        //self.statusTextView.text = "Status: AudioSession interruption ended."
 
         if(!OEPocketsphinxController.sharedInstance().isListening){
             OEPocketsphinxController.sharedInstance().startListeningWithLanguageModel(atPath: self.pathToFirstDynamicallyGeneratedLanguageModel, dictionaryAtPath: self.pathToFirstDynamicallyGeneratedDictionary, acousticModelAtPath: OEAcousticModel.path(toModel: "AcousticModelEnglish"), languageModelIsJSGF: false)
@@ -134,7 +156,7 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
     
     func audioInputDidBecomeUnavailable() {
         print("Local callback:  The audio input has become unavailable")
-        self.statusTextView.text = "Status: The audio input has become unavailable"
+        //self.statusTextView.text = "Status: The audio input has become unavailable"
         
         if(OEPocketsphinxController.sharedInstance().isListening){
             let stopListeningError: Error! = OEPocketsphinxController.sharedInstance().stopListening()
@@ -145,7 +167,7 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         
         func audioInputDidBecomeAvailable() {
             print("Local callback: The audio input is available")
-            self.statusTextView.text = "Status: The audio input is available"
+            //self.statusTextView.text = "Status: The audio input is available"
             if(!OEPocketsphinxController.sharedInstance().isListening) {
                 OEPocketsphinxController.sharedInstance().startListeningWithLanguageModel(atPath: self.pathToFirstDynamicallyGeneratedLanguageModel, dictionaryAtPath: self.pathToFirstDynamicallyGeneratedDictionary, acousticModelAtPath: OEAcousticModel.path(toModel: "AcousticModelEnglish"), languageModelIsJSGF: false)
             }
@@ -153,7 +175,7 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         
         func audioRouteDidChange(toRoute newRoute: String!) {
             print("Local callback: Audio route change. The new audio route is \(newRoute)")
-            self.statusTextView.text = "Status: Audio route change. The new audio route is \(newRoute)"
+            //self.statusTextView.text = "Status: Audio route change. The new audio route is \(newRoute)"
             let stopListeningError: Error! = OEPocketsphinxController.sharedInstance().stopListening()
             if(stopListeningError != nil) {
                 print("Error while stopping listening in audioInputDidBecomeAvailable: \(stopListeningError)")
@@ -168,44 +190,51 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
     func pocketsphinxRecognitionLoopDidStart() {
         
         print("Local callback: Pocketsphinx started.")
-        self.statusTextView.text = "Status: Pocketsphinx started."
+        //self.statusTextView.text = "Status: Pocketsphinx started."
     }
     
     func pocketsphinxDidStartListening() {
         
         print("Local callback: Pocketsphinx is now listening.")
-        self.statusTextView.text = "Status: Pocketsphinx is now listening."
+        //self.statusTextView.text = "Status: Pocketsphinx is now listening."
         
         self.startButton.isHidden = true
         self.stopButton.isHidden = false
-        self.suspendListeningButton.isHidden = false
-        self.resumeListeningButton.isHidden = true
+        //self.suspendListeningButton.isHidden = true
+        //self.resumeListeningButton.isHidden = true
     }
     
     func pocketsphinxDidDetectSpeech() {
         print("Local callback: Pocketsphinx has detected speech.")
-        self.statusTextView.text = "Status: Pocketsphinx has detected speech."
+        //self.statusTextView.text = "Status: Pocketsphinx has detected speech."
+        // to display audio wave
     }
     
     
     func pocketsphinxDidDetectFinishedSpeech() {
         print("Local callback: Pocketsphinx has detected a second of silence, concluding an utterance.")
-        self.statusTextView.text = "Status: Pocketsphinx has detected finished speech."
+        //self.statusTextView.text = "Status: Pocketsphinx has detected finished speech."
+        // to disappear audio wave
     }
     
     func pocketsphinxDidStopListening() {
         print("Local callback: Pocketsphinx has stopped listening.")
-        self.statusTextView.text = "Status: Pocketsphinx has stopped listening."
+        //self.statusTextView.text = "Status: Pocketsphinx has stopped listening."
+        
+        self.startButton.isHidden = false
+        self.stopButton.isHidden = true
+        //self.suspendListeningButton.isHidden = true
+        //self.resumeListeningButton.isHidden = true
     }
     
     func pocketsphinxDidSuspendRecognition() {
         print("Local callback: Pocketsphinx has suspended recognition.")
-        self.statusTextView.text = "Status: Pocketsphinx has suspended recognition."
+        //self.statusTextView.text = "Status: Pocketsphinx has suspended recognition."
     }
     
     func pocketsphinxDidResumeRecognition() {
         print("Local callback: Pocketsphinx has resumed recognition.")
-        self.statusTextView.text = "Status: Pocketsphinx has resumed recognition."
+        //self.statusTextView.text = "Status: Pocketsphinx has resumed recognition."
     }
     
     func pocketsphinxDidChangeLanguageModel(toFile newLanguageModelPathAsString: String!, andDictionary newDictionaryPathAsString: String!) {
@@ -214,22 +243,22 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
     
     func fliteDidStartSpeaking() {
         print("Local callback: Flite has started speaking")
-        self.statusTextView.text = "Status: Flite has started speaking."
+        //self.statusTextView.text = "Status: Flite has started speaking."
     }
     
     func fliteDidFinishSpeaking() {
         print("Local callback: Flite has finished speaking")
-        self.statusTextView.text = "Status: Flite has finished speaking."
+        //self.statusTextView.text = "Status: Flite has finished speaking."
     }
     
     func pocketSphinxContinuousSetupDidFail(withReason reasonForFailure: String!) {
         print("Local callback: Setting up the continuous recognition loop has failed for the reason \(reasonForFailure), please turn on OELogging.startOpenEarsLogging() to learn more.")
-        self.statusTextView.text = "Status: Not possible to start recognition loop."
+        //self.statusTextView.text = "Status: Not possible to start recognition loop."
     }
     
     func pocketSphinxContinuousTeardownDidFail(withReason reasonForFailure: String!) {
         print("Local callback: Tearing down the continuous recognition loop has failed for the reason %, please turn on [OELogging startOpenEarsLogging] to learn more.", reasonForFailure) // Log it.
-        self.statusTextView.text = "Status: Not possible to cleanly end recognition loop."
+        //self.statusTextView.text = "Status: Not possible to cleanly end recognition loop."
     }
     
     func testRecognitionCompleted() {
@@ -277,8 +306,8 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         
         self.startButton.isHidden = true
         self.stopButton.isHidden = false
-        self.suspendListeningButton.isHidden = true
-        self.resumeListeningButton.isHidden = false
+        //self.suspendListeningButton.isHidden = true
+        //self.resumeListeningButton.isHidden = false
     }
     
     @IBAction func resumeListeningButtonAction() {
@@ -286,8 +315,8 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         
         self.startButton.isHidden = true
         self.stopButton.isHidden = false
-        self.suspendListeningButton.isHidden = false
-        self.resumeListeningButton.isHidden = true
+        //self.suspendListeningButton.isHidden = false
+        //self.resumeListeningButton.isHidden = true
     }
     
     @IBAction func stopButtonAction() {
@@ -299,8 +328,8 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         }
         self.startButton.isHidden = false
         self.stopButton.isHidden = true
-        self.suspendListeningButton.isHidden = true
-        self.resumeListeningButton.isHidden = true
+        //self.suspendListeningButton.isHidden = true
+        //self.resumeListeningButton.isHidden = true
     }
     
     @IBAction func startButtonAction() {
@@ -309,8 +338,8 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         }
         self.startButton.isHidden = true
         self.stopButton.isHidden = false
-        self.suspendListeningButton.isHidden = false
-        self.resumeListeningButton.isHidden = true
+        //self.suspendListeningButton.isHidden = false
+        //self.resumeListeningButton.isHidden = true
     }
     
     func startDisplayingLevels() {
@@ -328,5 +357,23 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         if(self.fliteController.speechInProgress) {
             self.fliteDbLabel.text = "Flite Output level: \(self.fliteController.fliteOutputLevel)"
         }
+    }
+    
+    private func sendRequest(string: String, using client: TCPClient) -> String? {
+        print("Sending data ... ")
+        
+        switch client.send(string: string) {
+        case .success:
+            return readResponse(from: client)
+        case .failure( _):
+            print("Failed to send data...")
+            return nil
+        }
+    }
+    
+    private func readResponse(from client: TCPClient) -> String? {
+        guard let response = client.read(1024*10) else { return nil }
+        
+        return String(bytes: response, encoding: .utf8)
     }
 }
