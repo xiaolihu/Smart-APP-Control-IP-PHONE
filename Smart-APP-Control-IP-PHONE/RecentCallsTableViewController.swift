@@ -54,7 +54,9 @@ class RecentCallsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CallHistoryCell", for: indexPath)
         
         cell.textLabel?.text = callHistory[indexPath.row].contactName
-        cell.detailTextLabel?.text = callHistory[indexPath.row].telephonyNumber
+        cell.detailTextLabel?.numberOfLines = 2
+        cell.detailTextLabel?.text = DateFormatter.localizedString(from: callHistory[indexPath.row].callTime, dateStyle: .long, timeStyle: .none) + "\n" + DateFormatter.localizedString(from: callHistory[indexPath.row].callTime, dateStyle: .none, timeStyle: .short)
+        
         return cell
     }
     
