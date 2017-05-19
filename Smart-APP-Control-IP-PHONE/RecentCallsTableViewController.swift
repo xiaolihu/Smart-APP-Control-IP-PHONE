@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 
 class RecentCallsTableViewController: UITableViewController {
-    private var callHistory = Array<CallHistory>() {
+    private var callHistoryList = Array<CallHistory>() {
         didSet {
             tableView.reloadData()
-            PersistentUtil.storeCallHistory(callHistory: self.callHistory)
+            PersistentUtil.storeCallHistory(callHistory: self.callHistoryList)
         }
     }
     
@@ -21,18 +21,18 @@ class RecentCallsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let arrayOfObjectsUnarchivedData = UserDefaults.standard.data(forKey: "CallHistoryKey") {
+        if let arrayOfObjectsUnarchivedData = PersistentUtil.getCallHistory() {
             let arrayOfObjectsUnarchived = NSKeyedUnarchiver.unarchiveObject(with: arrayOfObjectsUnarchivedData) as! Array<CallHistory>
             if arrayOfObjectsUnarchived.count > 0 {
-                callHistory = arrayOfObjectsUnarchived
+                callHistoryList = arrayOfObjectsUnarchived
             } else {
-                callHistory.append(CallHistory(contactName: "Zhaocai Wang", telephonyNumber: "123-456-7890", callTime: Date()))
-                callHistory.append(CallHistory(contactName: "Javen Chen", telephonyNumber: "123-456-7891", callTime: Date()))
+                callHistoryList.append(CallHistory(contactName: "Zhaocai Wang", telephonyNumber: "123-456-7890", callTime: Date()))
+                callHistoryList.append(CallHistory(contactName: "Javen Chen", telephonyNumber: "123-456-7891", callTime: Date()))
             }
             print(arrayOfObjectsUnarchived)
         } else {
-            callHistory.append(CallHistory(contactName: "Zhaocai Wang", telephonyNumber: "123-456-7890", callTime: Date()))
-            callHistory.append(CallHistory(contactName: "Javen Chen", telephonyNumber: "123-456-7891", callTime: Date()))
+            callHistoryList.append(CallHistory(contactName: "Zhaocai Wang", telephonyNumber: "123-456-7890", callTime: Date()))
+            callHistoryList.append(CallHistory(contactName: "Javen Chen", telephonyNumber: "123-456-7891", callTime: Date()))
         }
         
         self.navigationItem.title = "Recent Calls"
@@ -47,15 +47,15 @@ class RecentCallsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return callHistory.count
+        return callHistoryList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CallHistoryCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CallHistoryListCell", for: indexPath)
         
-        cell.textLabel?.text = callHistory[indexPath.row].contactName
+        cell.textLabel?.text = callHistoryList[indexPath.row].contactName
         cell.detailTextLabel?.numberOfLines = 2
-        cell.detailTextLabel?.text = DateFormatter.localizedString(from: callHistory[indexPath.row].callTime, dateStyle: .long, timeStyle: .none) + "\n" + DateFormatter.localizedString(from: callHistory[indexPath.row].callTime, dateStyle: .none, timeStyle: .short)
+        cell.detailTextLabel?.text = DateFormatter.localizedString(from: callHistoryList[indexPath.row].callTime, dateStyle: .long, timeStyle: .none) + "\n" + DateFormatter.localizedString(from: callHistoryList[indexPath.row].callTime, dateStyle: .none, timeStyle: .short)
         
         return cell
     }
@@ -69,8 +69,8 @@ class RecentCallsTableViewController: UITableViewController {
      */
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedContantName = callHistory[indexPath.row].contactName
-        let selecteTelephonyNumber = callHistory[indexPath.row].telephonyNumber
+        let selectedContantName = callHistoryList[indexPath.row].contactName
+        let selecteTelephonyNumber = callHistoryList[indexPath.row].telephonyNumber
         print(selectedContantName)
         print(selecteTelephonyNumber)
         
@@ -81,13 +81,13 @@ class RecentCallsTableViewController: UITableViewController {
             navigationController?.popViewController(animated: true)
         }
     }
-    
+        /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tableView.beginUpdates()
             // Delete the row from the data source
-            callHistory.remove(at: indexPath.row)
+            callHistoryList.remove(at: indexPath.row)
             print(indexPath.section)
             print(indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
@@ -98,7 +98,7 @@ class RecentCallsTableViewController: UITableViewController {
     }
     
     
-    /*
+
      // Override to support rearranging the table view.
      override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
      

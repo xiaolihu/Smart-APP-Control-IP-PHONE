@@ -20,7 +20,7 @@ class ContactListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let arrayOfObjectsUnarchivedData = UserDefaults.standard.data(forKey: "ContactListKey") {
+        if let arrayOfObjectsUnarchivedData = PersistentUtil.getContactList() {
             let arrayOfObjectsUnarchived = NSKeyedUnarchiver.unarchiveObject(with: arrayOfObjectsUnarchivedData) as! Array<Contact>
             if arrayOfObjectsUnarchived.count > 0 {
                 contactList = arrayOfObjectsUnarchived
