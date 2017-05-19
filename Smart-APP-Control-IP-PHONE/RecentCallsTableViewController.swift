@@ -20,20 +20,15 @@ class RecentCallsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let arrayOfObjectsUnarchivedData = PersistentUtil.getCallHistory() {
-            let arrayOfObjectsUnarchived = NSKeyedUnarchiver.unarchiveObject(with: arrayOfObjectsUnarchivedData) as! Array<CallHistory>
-            if arrayOfObjectsUnarchived.count > 0 {
-                callHistoryList = arrayOfObjectsUnarchived
-            } else {
-                callHistoryList.append(CallHistory(contactName: "Zhaocai Wang", telephonyNumber: "123-456-7890", callTime: Date()))
-                callHistoryList.append(CallHistory(contactName: "Javen Chen", telephonyNumber: "123-456-7891", callTime: Date()))
-            }
-            print(arrayOfObjectsUnarchived)
+    
+        if PersistentUtil.getCallHistory().count > 0 {
+            callHistoryList = PersistentUtil.getCallHistory()
         } else {
             callHistoryList.append(CallHistory(contactName: "Zhaocai Wang", telephonyNumber: "123-456-7890", callTime: Date()))
             callHistoryList.append(CallHistory(contactName: "Javen Chen", telephonyNumber: "123-456-7891", callTime: Date()))
         }
+//        callHistoryList.removeAll()
+//                PersistentUtil.addCallHistory(callHistory: CallHistory(contactName: "Javen Chen1", telephonyNumber: "123-456-7892", callTime: Date()))
         
         self.navigationItem.title = "Recent Calls"
         // Uncomment the following line to preserve selection between presentations
@@ -56,6 +51,7 @@ class RecentCallsTableViewController: UITableViewController {
         cell.textLabel?.text = callHistoryList[indexPath.row].contactName
         cell.detailTextLabel?.numberOfLines = 2
         cell.detailTextLabel?.text = DateFormatter.localizedString(from: callHistoryList[indexPath.row].callTime, dateStyle: .long, timeStyle: .none) + "\n" + DateFormatter.localizedString(from: callHistoryList[indexPath.row].callTime, dateStyle: .none, timeStyle: .short)
+      
         
         return cell
     }

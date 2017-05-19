@@ -33,35 +33,25 @@ class PersistentUtil {
         defaults.synchronize()
     }
     
-    static func getCallHistory() -> Data? {
-         return UserDefaults.standard.data(forKey: "CallHistoryKey")
+    static func getCallHistory() -> Array<CallHistory> {
+        var callHistoryList : Array<CallHistory>
+        if let arrayOfObjectsUnarchivedData = UserDefaults.standard.data(forKey: "CallHistoryKey") {
+            let arrayOfObjectsUnarchived = NSKeyedUnarchiver.unarchiveObject(with: arrayOfObjectsUnarchivedData) as! Array<CallHistory>
+            if arrayOfObjectsUnarchived.count > 0 {
+                callHistoryList = arrayOfObjectsUnarchived
+            } else {
+                callHistoryList = Array<CallHistory>()
+            }
+        } else {
+            callHistoryList = Array<CallHistory>()
+        }
+        
+        return callHistoryList;
     }
     
     static func addCallHistory(callHistory: CallHistory) {
-//        if let arrayOfObjectsUnarchivedData = self.getCallHistory() {
-//            var arrayOfObjectsUnarchived = NSKeyedUnarchiver.unarchiveObject(with: arrayOfObjectsUnarchivedData) as! Array<CallHistory>
-//            if arrayOfObjectsUnarchived.count > 0 {
-//                arrayOfObjectsUnarchived.append(callHistory)
-//            } else {
-//                
-//                callHistory.append(CallHistory(contactName: "Zhaocai Wang", telephonyNumber: "123-456-7890", callTime: Date()))
-//                callHistory.append(CallHistory(contactName: "Javen Chen", telephonyNumber: "123-456-7891", callTime: Date()))
-//            }
-//            print(arrayOfObjectsUnarchived)
-//        }
-//        
-//        if let arrayOfObjectsUnarchivedData = self.getCallHistory() {
-//            let arrayOfObjectsUnarchived = NSKeyedUnarchiver.unarchiveObject(with: arrayOfObjectsUnarchivedData) as! Array<CallHistory>
-//            if arrayOfObjectsUnarchived.count > 0 {
-//                callHistory = arrayOfObjectsUnarchived
-//            } else {
-//                callHistory.append(CallHistory(contactName: "Zhaocai Wang", telephonyNumber: "123-456-7890", callTime: Date()))
-//                callHistory.append(CallHistory(contactName: "Javen Chen", telephonyNumber: "123-456-7891", callTime: Date()))
-//            }
-//            print(arrayOfObjectsUnarchived)
-//        } else {
-//            callHistory.append(CallHistory(contactName: "Zhaocai Wang", telephonyNumber: "123-456-7890", callTime: Date()))
-//            callHistory.append(CallHistory(contactName: "Javen Chen", telephonyNumber: "123-456-7891", callTime: Date()))
-//        }
+        var callHistoryList = self.getCallHistory()
+                callHistoryList.append(callHistory)
+        self.storeCallHistory(callHistory:callHistoryList)
     }
 }
