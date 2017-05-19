@@ -38,7 +38,7 @@ class BTAdvertise: NSObject, CBPeripheralManagerDelegate {
     //
     var peripheralService: CBMutableService?
     
-    private let advertiseData: Dictionary<String, CBUUID>= [
+    private let advertiseData: Dictionary<String, CBUUID> = [
         "iPhone6 as Peripheral": speechTextCharacteristicUUID
     ]
     

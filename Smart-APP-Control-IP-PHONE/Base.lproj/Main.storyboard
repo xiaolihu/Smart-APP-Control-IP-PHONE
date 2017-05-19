@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4YP-q9-ahy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5Ql-7Y-Zoh">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Voice-->
+        <!--Smart Dialer-->
         <scene sceneID="cGU-XU-hE3">
             <objects>
                 <viewController id="4YP-q9-ahy" customClass="VoiceRecognitionViewController" customModule="Smart_APP_Control_IP_PHONE" customModuleProvider="target" sceneMemberID="viewController">
@@ -33,6 +33,7 @@
                                 <rect key="frame" x="47" y="333" width="280" height="88"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" text="&quot;Call Huang Xiaolin&quot;" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="8Ju-Jw-yKW" userLabel="Heard Text View">
@@ -66,7 +67,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Contact List" image="directory"/>
                                 <connections>
-                                    <segue destination="5Ql-7Y-Zoh" kind="showDetail" id="b23-5U-ouX"/>
+                                    <segue destination="K3W-2Q-Nvc" kind="show" id="cPe-xs-W4u"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HK3-1k-ZRE" userLabel="Recent Calls">
@@ -95,6 +96,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Voice" image="VoiceIcon" id="3wU-Qr-7aU"/>
+                    <navigationItem key="navigationItem" title="Smart Dialer" id="BRm-NH-qUm"/>
                     <connections>
                         <outlet property="heardTextView" destination="8Ju-Jw-yKW" id="Jtk-n1-g6J"/>
                         <outlet property="startButton" destination="law-mF-T6O" id="Kdv-vA-TOE"/>
@@ -104,9 +106,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CaQ-yX-yVJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2037.5999999999999" y="-134.48275862068968"/>
+            <point key="canvasLocation" x="2663" y="-98"/>
         </scene>
-        <!--Title-->
+        <!--Contact List-->
         <scene sceneID="f8M-xv-r4D">
             <objects>
                 <tableViewController id="K3W-2Q-Nvc" customClass="ContactListTableViewController" customModule="Smart_APP_Control_IP_PHONE" customModuleProvider="target" sceneMemberID="viewController">
@@ -119,18 +121,18 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vrT-Fi-TUS" id="W1L-IU-sSn">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zI4-9f-lhn">
-                                            <rect key="frame" x="15" y="11" width="34" height="21"/>
+                                            <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8X2-J1-AjL">
-                                            <rect key="frame" x="316" y="11" width="44" height="21"/>
+                                            <rect key="frame" x="316" y="12" width="44" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -145,7 +147,8 @@
                             <outlet property="delegate" destination="K3W-2Q-Nvc" id="QPq-wS-eKC"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="jNJ-JJ-fJR">
+                    <navigationItem key="navigationItem" title="Contact List" id="jNJ-JJ-fJR">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="4dS-yB-emX"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="T3V-Mf-I8F">
                             <connections>
                                 <action selector="AddContact:" destination="K3W-2Q-Nvc" id="lFs-SX-VVK"/>
@@ -155,7 +158,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0eH-G5-UTw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3712.8000000000002" y="-134.48275862068968"/>
+            <point key="canvasLocation" x="3391" y="-99"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lao-2O-bSb">
@@ -168,12 +171,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="K3W-2Q-Nvc" kind="relationship" relationship="rootViewController" id="SHC-sk-Ka7"/>
+                        <segue destination="4YP-q9-ahy" kind="relationship" relationship="rootViewController" id="FC9-k3-0hZ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3GY-Pn-9em" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2773.5999999999999" y="-134.48275862068968"/>
+            <point key="canvasLocation" x="1874" y="-99"/>
         </scene>
     </scenes>
     <resources>
