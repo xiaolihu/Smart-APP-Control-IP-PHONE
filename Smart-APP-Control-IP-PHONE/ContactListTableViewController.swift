@@ -12,7 +12,7 @@ class ContactListTableViewController: UITableViewController {
     private var contactList = Array<Contact>() {
         didSet {
             tableView.reloadData()
-            storeContactList()
+            PersistentUtil.storeContactList(contactList: self.contactList)
         }
     }
     
@@ -149,15 +149,5 @@ class ContactListTableViewController: UITableViewController {
             textField.placeholder = "Phone Number"
         }
         present(alert, animated: true, completion: nil)
-    }
-    
-    private func storeContactList() {
-        let defaults = UserDefaults.standard
-        let arrayOfObjectsKey = "ContactListKey"
-        
-        let arrayOfObjectsData = NSKeyedArchiver.archivedData(withRootObject: self.contactList)
-        
-        defaults.set(arrayOfObjectsData, forKey: arrayOfObjectsKey)
-        defaults.synchronize()
-    }
+    }  
 }
