@@ -18,4 +18,14 @@ class PersistentUtil {
         defaults.set(arrayOfObjectsData, forKey: arrayOfObjectsKey)
         defaults.synchronize()
     }
+    
+    static func storeCallHistory(callHistory : Array<CallHistory>) {
+        let defaults = UserDefaults.standard
+        let arrayOfObjectsKey = "CallHistoryKey"
+        
+        let arrayOfObjectsData = NSKeyedArchiver.archivedData(withRootObject: callHistory)
+        
+        defaults.set(arrayOfObjectsData, forKey: arrayOfObjectsKey)
+        defaults.synchronize()
+    }
 }

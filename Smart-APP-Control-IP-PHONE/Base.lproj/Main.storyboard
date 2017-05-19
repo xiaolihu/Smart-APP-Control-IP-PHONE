@@ -74,6 +74,9 @@
                                 <rect key="frame" x="230" y="506" width="19" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="callHistoryRecents"/>
+                                <connections>
+                                    <segue destination="xHQ-o3-WhW" kind="show" id="d34-JW-iPa"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lB5-yC-ZNS">
                                 <rect key="frame" x="37" y="346" width="300" height="97"/>
@@ -177,6 +180,58 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3GY-Pn-9em" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1874" y="-99"/>
+        </scene>
+        <!--Recent Calls-->
+        <scene sceneID="c9X-Ma-V02">
+            <objects>
+                <tableViewController id="xHQ-o3-WhW" customClass="RecentCallsTableViewController" customModule="Smart_APP_Control_IP_PHONE" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Xcb-x3-Tpj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CallHistoryCell" textLabel="Zoj-kq-mRV" detailTextLabel="vLy-YC-Vg2" style="IBUITableViewCellStyleValue1" id="QiB-jd-gDP">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QiB-jd-gDP" id="Hj8-DQ-SJy">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zoj-kq-mRV">
+                                            <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vLy-YC-Vg2">
+                                            <rect key="frame" x="316" y="12" width="44" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="xHQ-o3-WhW" id="zYr-Tu-mYC"/>
+                            <outlet property="delegate" destination="xHQ-o3-WhW" id="FN4-el-OJO"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Recent Calls" id="ker-ZW-0cR">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="FAT-ru-Efb"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="lCV-GX-mza">
+                            <connections>
+                                <action selector="AddContact:" destination="xHQ-o3-WhW" id="IAG-9u-T2b"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KJB-NM-rOz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3452" y="695"/>
         </scene>
     </scenes>
     <resources>
