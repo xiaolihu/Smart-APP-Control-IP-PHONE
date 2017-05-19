@@ -10,6 +10,14 @@ import UIKit
 
 class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate {
     
+    // TODO
+    var selectedContantName = "";
+    var selecteTelephonyNumber = ""
+    func startCall() {
+        print(selectedContantName)
+        print(selecteTelephonyNumber)
+    }
+    
     var slt = Slt()
     var openEarsEventsObserver = OEEventsObserver()
     var fliteController = OEFliteController()

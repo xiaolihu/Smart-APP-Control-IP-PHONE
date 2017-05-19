@@ -65,6 +65,19 @@ class ContactListTableViewController: UITableViewController {
      }
      */
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedContantName = contactList[indexPath.row].contactName
+        let selecteTelephonyNumber = contactList[indexPath.row].telephonyNumber
+        print(selectedContantName)
+        print(selecteTelephonyNumber)
+        
+        if let vrc = self.navigationController?.viewControllers[0] as? VoiceRecognitionViewController {
+            vrc.selectedContantName = selectedContantName
+            vrc.selecteTelephonyNumber = selecteTelephonyNumber
+            vrc.startCall()
+            navigationController?.popViewController(animated: true)
+        }
+    }
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
