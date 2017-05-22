@@ -67,8 +67,8 @@ class RecentCallsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedContantName = callHistoryList[indexPath.row].contactName
         let selecteTelephonyNumber = callHistoryList[indexPath.row].telephonyNumber
-        print(selectedContantName)
-        print(selecteTelephonyNumber)
+        // print(selectedContantName)
+        // print(selecteTelephonyNumber)
         
         if let vrc = self.navigationController?.viewControllers[0] as? VoiceRecognitionViewController {
             vrc.selectedContantName = selectedContantName

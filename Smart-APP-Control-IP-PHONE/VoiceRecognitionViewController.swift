@@ -14,8 +14,8 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
     var selectedContantName = "";
     var selecteTelephonyNumber = ""
     func startCall() {
-        print(selectedContantName)
-        print(selecteTelephonyNumber)
+        print("Local callback: Selected to call name - \(selectedContantName).")
+        print("Local callback: Selected to call # - \(selecteTelephonyNumber).")
     }
     
     var slt = Slt()
@@ -128,7 +128,7 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         
         // to get contact name from other view controller
         if let contactName = Shared.shared.contactName {
-            print("#### \(contactName) ####")
+            print("Local callback: You said - \(contactName).")
         }
         
         self.heardTextView.text = "\"Call \(hypothesis!)\""
@@ -365,7 +365,7 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
     
     func addRecentContact(contactName: String) {
         
-        print("**** Add \(contactName) into history list****")
+        print("Local callback: Added \(contactName) into history list.")
         
         PersistentUtil.addCallHistory(callHistory: CallHistory(contactName: "\(contactName)", telephonyNumber: "123-456-7892", callTime: Date()))
     }
@@ -373,7 +373,7 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
     // Call Contact w/ TCP client socket
     private func startCall(contactName: String) {
         // the following line is for debugging
-        print("**** Dial \(contactName) ****")
+        print("Local callback: Dialing \(contactName) ... ")
         
         /* uncomment the block to test w/ real world connecting
         var tcpServer: String!
@@ -387,21 +387,21 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         case .success:
             print("Connected to host \(tcpCli?.address)")
             if let response = sendRequest(string: "Dial \(contactName)", using: tcpCli!) {
-                print("Response: \(response)")
+                print("Local callback: Recieved \(response) from IP phone.")
             }
         case .failure( _):
-            print("Failed To Connect")
+            print("Local callback: Failed To Connect IP Phone.")
         }*/
     }
     
     private func sendRequest(string: String, using client: TCPClient) -> String? {
-        print("Sending data ... ")
+        print("Local callback: Sending data ... ")
         
         switch client.send(string: string) {
         case .success:
             return readResponse(from: client)
         case .failure( _):
-            print("Failed to send data...")
+            print("Local callback: Failed to send data.")
             return nil
         }
     }
