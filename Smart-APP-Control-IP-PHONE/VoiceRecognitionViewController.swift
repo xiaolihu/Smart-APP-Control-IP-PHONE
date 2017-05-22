@@ -39,6 +39,7 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
     @IBOutlet var statusTextView:UITextView!
     @IBOutlet var pocketsphinxDbLabel:UILabel!
     @IBOutlet var fliteDbLabel:UILabel!
+    @IBOutlet var ciscoLogo:UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -134,23 +135,11 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         
         self.fliteController.say(_:"You will call \(hypothesis!)", with:self.slt)
         
-        // Call Contact w/ TCP client socket
-        var tcpServer: String!
-        let port = 40000
-        var tcpCli: TCPClient?
+        // dail the contact name recognized
+        self.startCall(contactName: hypothesis!)
         
-        tcpServer = "10.74.37.187"
-        tcpCli = TCPClient(address: tcpServer, port: Int32(port))
-        
-        switch tcpCli!.connect(timeout: 10) {
-        case .success:
-            print("Connected to host \(tcpCli?.address)")
-            if let response = sendRequest(string: "Dial \(hypothesis!)", using: tcpCli!) {
-                print("Response: \(response)")
-            }
-        case .failure( _):
-            print("Failed To Connect")
-        }
+        // add the contact name into call history list
+        self.addRecentContact(contactName: hypothesis!)
     }
     
     func audioSessionInterruptionDidEnd() {
@@ -208,11 +197,13 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         
         self.startButton.isHidden = true
         self.stopButton.isHidden = false
+        
         //self.suspendListeningButton.isHidden = true
         //self.resumeListeningButton.isHidden = true
     }
     
     func pocketsphinxDidDetectSpeech() {
+        self.ciscoLogo.isHidden = true
         print("Local callback: Pocketsphinx has detected speech.")
         //self.statusTextView.text = "Status: Pocketsphinx has detected speech."
         // to display audio wave
@@ -231,6 +222,7 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         
         self.startButton.isHidden = false
         self.stopButton.isHidden = true
+        self.ciscoLogo.isHidden = false
         //self.suspendListeningButton.isHidden = true
         //self.resumeListeningButton.isHidden = true
     }
@@ -314,6 +306,7 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         
         self.startButton.isHidden = true
         self.stopButton.isHidden = false
+        self.ciscoLogo.isHidden = true
         //self.suspendListeningButton.isHidden = true
         //self.resumeListeningButton.isHidden = false
     }
@@ -323,6 +316,7 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         
         self.startButton.isHidden = true
         self.stopButton.isHidden = false
+        self.ciscoLogo.isHidden = true
         //self.suspendListeningButton.isHidden = false
         //self.resumeListeningButton.isHidden = true
     }
@@ -336,6 +330,7 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         }
         self.startButton.isHidden = false
         self.stopButton.isHidden = true
+        self.ciscoLogo.isHidden = false
         //self.suspendListeningButton.isHidden = true
         //self.resumeListeningButton.isHidden = true
     }
@@ -346,6 +341,7 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         }
         self.startButton.isHidden = true
         self.stopButton.isHidden = false
+        self.ciscoLogo.isHidden = true
         //self.suspendListeningButton.isHidden = false
         //self.resumeListeningButton.isHidden = true
     }
@@ -365,6 +361,37 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         if(self.fliteController.speechInProgress) {
             self.fliteDbLabel.text = "Flite Output level: \(self.fliteController.fliteOutputLevel)"
         }
+    }
+    
+    func addRecentContact(contactName: String) {
+        
+        print("**** Add \(contactName) into history list****")
+        
+        PersistentUtil.addCallHistory(callHistory: CallHistory(contactName: "\(contactName)", telephonyNumber: "123-456-7892", callTime: Date()))
+    }
+    
+    // Call Contact w/ TCP client socket
+    private func startCall(contactName: String) {
+        // the following line is for debugging
+        print("**** Dial \(contactName) ****")
+        
+        /* uncomment the block to test w/ real world connecting
+        var tcpServer: String!
+        let port = 40000
+        var tcpCli: TCPClient?
+        
+        tcpServer = "10.74.37.187"
+        tcpCli = TCPClient(address: tcpServer, port: Int32(port))
+        
+        switch tcpCli!.connect(timeout: 10) {
+        case .success:
+            print("Connected to host \(tcpCli?.address)")
+            if let response = sendRequest(string: "Dial \(contactName)", using: tcpCli!) {
+                print("Response: \(response)")
+            }
+        case .failure( _):
+            print("Failed To Connect")
+        }*/
     }
     
     private func sendRequest(string: String, using client: TCPClient) -> String? {
