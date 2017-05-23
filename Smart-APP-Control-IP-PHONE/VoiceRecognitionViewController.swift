@@ -15,6 +15,8 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
     var selecteTelephonyNumber = ""
     func startCall() {
         print("Local callback: Selected to call name - \(selectedContantName).")
+        self.heardTextView.text = "\"Call \(selectedContantName)\""
+        self.startDialing(contactName: selectedContantName)
         print("Local callback: Selected to call # - \(selecteTelephonyNumber).")
     }
     
@@ -31,6 +33,7 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
     var pathToSecondDynamicallyGeneratedDictionary: String!
     var timer: Timer!
     var tcpCli: TCPClient!
+    var connectionState: Bool! = false
     
     @IBOutlet var stopButton:UIButton!
     @IBOutlet var startButton:UIButton!
@@ -59,12 +62,12 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
                                   "Huang Xiaolin",
                                   "Wang Zhaocai",
                                   "Chen Javen",
-                                  "Xuebin Liang",
+                                  "Liang Xuebin",
                                   "Gu Xingcai"]
         
         let ContactName = "ContactName"
         
-        self.connectToIPPhone()
+        //connectionState = self.connectToIPPhone()
 
         let firstLanguageModelGenerationError: Error! = languageModelGenerator.generateLanguageModel(from: firstLanguageArray, withFilesNamed: ContactName, forAcousticModelAtPath: OEAcousticModel.path(toModel: "AcousticModelEnglish"))
         
@@ -152,10 +155,10 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
             self.startCallButton.isHidden = false
         }
         
-        self.fliteController.say(_:"You will call \(hypothesis!)", with:self.slt)
+        self.fliteController.say(_:"You are calling \(hypothesis!)", with:self.slt)
         
         // dail the contact name recognized
-        self.startCall(contactName: hypothesis!)
+        self.startDialing(contactName: hypothesis!)
         
         // add the contact name into call history list
         self.addRecentContact(contactName: hypothesis!)
@@ -351,12 +354,14 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
     }
     
     @IBAction func disconnIPAction() {
-        if(self.connectIP.isHidden){
+        if(self.connectIP.isHidden && !self.connectionState){
             self.disconnIP.isHidden = true
             self.connectIP.isHidden = false
             self.startButton.isHidden = false
             self.disableVo.isHidden = true
+            self.connectionState = self.connectToIPPhone()
         }
+
     }
     
     @IBAction func connectIPAction() {
@@ -367,6 +372,8 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
             self.startButton.isHidden = true
             self.startCallButton.isHidden = true
             self.endCallButton.isHidden = true
+            self.connectionState = false
+            self.disconnectFromIPPhone()
         }
     }
     
@@ -421,7 +428,7 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         PersistentUtil.addCallHistory(callHistory: CallHistory(contactName: "\(contactName)", telephonyNumber: "123-456-7892", callTime: Date()))
     }
     
-    private func connectToIPPhone() {
+    private func connectToIPPhone() -> Bool {
         var tcpServer: String!
         let port = 40000
         
@@ -429,17 +436,24 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         tcpCli = TCPClient(address: tcpServer, port: Int32(port))
         switch tcpCli!.connect(timeout: 10) {
         case .success:
-            print("Connected to host \(tcpCli?.address)")
+            print("Connected to host \(tcpCli!.address)")
             if let response = sendRequest(string: "Connection Probation...", using: tcpCli!) {
                 print("Local callback: Recieved \(response) from IP phone.")
             }
+            return true
         case .failure( _):
             print("Local callback: Failed To Connect IP Phone.")
+            return false
         }
     }
 
+    private func disconnectFromIPPhone() {
+        tcpCli.close()
+        print("Local callback: disconnecting from IP Phone...")
+    }
+
     // Call Contact w/ TCP client socket
-    private func startCall(contactName: String) {
+    private func startDialing(contactName: String) {
         // the following line is for debugging
         print("Local callback: Dialing \(contactName) ... ")
 
