@@ -41,7 +41,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="namePhonePad" enablesReturnKeyAutomatically="YES"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cisco Smart Dialer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7La-PH-W61">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="67"/>
@@ -95,7 +95,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="cp-8865-k9"/>
                                 <connections>
-                                    <action selector="connectIPAction" destination="4YP-q9-ahy" eventType="touchUpInside" id="gvB-0m-paZ"/>
+                                    <action selector="connectIPButtonAction" destination="4YP-q9-ahy" eventType="touchUpInside" id="2pF-n5-xgg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqA-ZE-Awn">
@@ -103,7 +103,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="cp-8865-k9-off"/>
                                 <connections>
-                                    <action selector="disconnIPAction" destination="4YP-q9-ahy" eventType="touchUpInside" id="18C-DB-HNm"/>
+                                    <action selector="disconnIPButtonAction" destination="4YP-q9-ahy" eventType="touchUpInside" id="VVD-Gu-UFD"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLn-VN-HHq">
@@ -146,6 +146,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CaQ-yX-yVJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="lRC-pN-LKu">
+                    <connections>
+                        <action selector="dismissKeyboardWithSender:" destination="4YP-q9-ahy" id="rCi-xz-bNN"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2661.5999999999999" y="-98.50074962518741"/>
         </scene>
