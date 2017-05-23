@@ -40,6 +40,11 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
     @IBOutlet var pocketsphinxDbLabel:UILabel!
     @IBOutlet var fliteDbLabel:UILabel!
     @IBOutlet var ciscoLogo:UIButton!
+    @IBOutlet var connectIP:UIButton!
+    @IBOutlet var disconnIP:UIButton!
+    @IBOutlet var disableVo:UIButton!
+    @IBOutlet var startCallButton:UIButton!
+    @IBOutlet var endCallButton:UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,8 +106,14 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
                     }
                 }
                 
-                self.startButton.isHidden = false
+                self.startButton.isHidden = true
                 self.stopButton.isHidden = true
+                self.connectIP.isHidden = true
+                self.disconnIP.isHidden = false
+                
+                self.startCallButton.isHidden = true
+                self.endCallButton.isHidden = true
+                
                 //self.suspendListeningButton.isHidden = true
                 //self.resumeListeningButton.isHidden = true
             }
@@ -132,6 +143,10 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         }
         
         self.heardTextView.text = "\"Call \(hypothesis!)\""
+        
+        if(self.heardTextView.text != "Call Huang Xiaolin") {
+            self.startCallButton.isHidden = false
+        }
         
         self.fliteController.say(_:"You will call \(hypothesis!)", with:self.slt)
         
@@ -321,6 +336,36 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         //self.resumeListeningButton.isHidden = true
     }
     
+    @IBAction func startCallAction() {
+        self.startCallButton.isHidden = true
+        self.endCallButton.isHidden = false
+    }
+    
+    @IBAction func endCallAction() {
+        self.startCallButton.isHidden = false
+        self.endCallButton.isHidden = true
+    }
+    
+    @IBAction func disconnIPAction() {
+        if(self.connectIP.isHidden){
+            self.disconnIP.isHidden = true
+            self.connectIP.isHidden = false
+            self.startButton.isHidden = false
+            self.disableVo.isHidden = true
+        }
+    }
+    
+    @IBAction func connectIPAction() {
+        if(self.disconnIP.isHidden){
+            self.connectIP.isHidden = true
+            self.disconnIP.isHidden = false
+            self.disableVo.isHidden = false
+            self.startButton.isHidden = true
+            self.startCallButton.isHidden = true
+            self.endCallButton.isHidden = true
+        }
+    }
+    
     @IBAction func stopButtonAction() {
         if(OEPocketsphinxController.sharedInstance().isListening){
             let stopListeningError: Error! = OEPocketsphinxController.sharedInstance().stopListening()
@@ -331,6 +376,7 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         self.startButton.isHidden = false
         self.stopButton.isHidden = true
         self.ciscoLogo.isHidden = false
+        self.disableVo.isHidden = true
         //self.suspendListeningButton.isHidden = true
         //self.resumeListeningButton.isHidden = true
     }
@@ -342,6 +388,7 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         self.startButton.isHidden = true
         self.stopButton.isHidden = false
         self.ciscoLogo.isHidden = true
+        self.disableVo.isHidden = true
         //self.suspendListeningButton.isHidden = false
         //self.resumeListeningButton.isHidden = true
     }

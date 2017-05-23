@@ -91,9 +91,41 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gv-aI-BdX">
-                                <rect key="frame" x="4" y="71" width="131" height="140"/>
+                                <rect key="frame" x="12" y="73" width="131" height="140"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="cp-8865-k9"/>
+                                <connections>
+                                    <action selector="connectIPAction" destination="4YP-q9-ahy" eventType="touchUpInside" id="gvB-0m-paZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqA-ZE-Awn">
+                                <rect key="frame" x="12" y="73" width="131" height="140"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="cp-8865-k9-off"/>
+                                <connections>
+                                    <action selector="disconnIPAction" destination="4YP-q9-ahy" eventType="touchUpInside" id="18C-DB-HNm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLn-VN-HHq">
+                                <rect key="frame" x="156" y="492" width="62" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="voiceDisable"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iWF-jy-3KT">
+                                <rect key="frame" x="240" y="118" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="endCall"/>
+                                <connections>
+                                    <action selector="endCallAction" destination="4YP-q9-ahy" eventType="touchUpInside" id="ysS-cT-8hC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFd-ez-bAW">
+                                <rect key="frame" x="243" y="123" width="44" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="startCall"/>
+                                <connections>
+                                    <action selector="startCallAction" destination="4YP-q9-ahy" eventType="touchUpInside" id="2Nj-Eq-gZc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -102,15 +134,20 @@
                     <navigationItem key="navigationItem" title="Smart Dialer" id="BRm-NH-qUm"/>
                     <connections>
                         <outlet property="ciscoLogo" destination="lB5-yC-ZNS" id="hyi-E3-aJv"/>
+                        <outlet property="connectIP" destination="4gv-aI-BdX" id="CAv-kQ-dno"/>
+                        <outlet property="disableVo" destination="xLn-VN-HHq" id="sZp-r3-xrT"/>
+                        <outlet property="disconnIP" destination="hqA-ZE-Awn" id="9b1-Yx-yyV"/>
+                        <outlet property="endCallButton" destination="iWF-jy-3KT" id="iyg-PU-rND"/>
                         <outlet property="heardTextView" destination="8Ju-Jw-yKW" id="Jtk-n1-g6J"/>
                         <outlet property="startButton" destination="law-mF-T6O" id="Kdv-vA-TOE"/>
+                        <outlet property="startCallButton" destination="hFd-ez-bAW" id="H1w-8b-dNx"/>
                         <outlet property="statusTextView" destination="C3R-cW-I7o" id="lza-CF-LKe"/>
                         <outlet property="stopButton" destination="pC9-Ns-gMP" id="RWr-hs-swA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CaQ-yX-yVJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2663" y="-98"/>
+            <point key="canvasLocation" x="2661.5999999999999" y="-98.50074962518741"/>
         </scene>
         <!--Contact List-->
         <scene sceneID="f8M-xv-r4D">
@@ -235,8 +272,12 @@
         <image name="callHistoryRecents" width="12" height="12"/>
         <image name="cisco_logo_wave" width="582" height="178"/>
         <image name="cp-8865-k9" width="470" height="470"/>
+        <image name="cp-8865-k9-off" width="470" height="470"/>
         <image name="directory" width="9" height="12"/>
+        <image name="endCall" width="50" height="50"/>
+        <image name="startCall" width="512" height="512"/>
         <image name="voice" width="50" height="50"/>
+        <image name="voiceDisable" width="50" height="50"/>
         <image name="voiceInput" width="50" height="50"/>
     </resources>
 </document>
