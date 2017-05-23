@@ -30,6 +30,7 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
     var pathToSecondDynamicallyGeneratedLanguageModel: String!
     var pathToSecondDynamicallyGeneratedDictionary: String!
     var timer: Timer!
+    var tcpCli: TCPClient!
     
     @IBOutlet var stopButton:UIButton!
     @IBOutlet var startButton:UIButton!
@@ -58,6 +59,8 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         
         let ContactName = "ContactName"
         
+        self.connectToIPPhone()
+
         let firstLanguageModelGenerationError: Error! = languageModelGenerator.generateLanguageModel(from: firstLanguageArray, withFilesNamed: ContactName, forAcousticModelAtPath: OEAcousticModel.path(toModel: "AcousticModelEnglish"))
         
         if(firstLanguageModelGenerationError != nil) {
@@ -70,7 +73,8 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
             let Operation = "Operation"
             
             let secondLanguageArray = ["Search",
-                                       "Dail",
+                                       "Dial",
+                                       "Call",
                                        "Hangup",
                                        "change model"]
             
@@ -370,28 +374,32 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         PersistentUtil.addCallHistory(callHistory: CallHistory(contactName: "\(contactName)", telephonyNumber: "123-456-7892", callTime: Date()))
     }
     
-    // Call Contact w/ TCP client socket
-    private func startCall(contactName: String) {
-        // the following line is for debugging
-        print("Local callback: Dialing \(contactName) ... ")
-        
-        /* uncomment the block to test w/ real world connecting
+    private func connectToIPPhone() {
         var tcpServer: String!
         let port = 40000
-        var tcpCli: TCPClient?
         
         tcpServer = "10.74.37.187"
         tcpCli = TCPClient(address: tcpServer, port: Int32(port))
-        
         switch tcpCli!.connect(timeout: 10) {
         case .success:
             print("Connected to host \(tcpCli?.address)")
-            if let response = sendRequest(string: "Dial \(contactName)", using: tcpCli!) {
+            if let response = sendRequest(string: "Connection Probation...", using: tcpCli!) {
                 print("Local callback: Recieved \(response) from IP phone.")
             }
         case .failure( _):
             print("Local callback: Failed To Connect IP Phone.")
-        }*/
+        }
+    }
+
+    // Call Contact w/ TCP client socket
+    private func startCall(contactName: String) {
+        // the following line is for debugging
+        print("Local callback: Dialing \(contactName) ... ")
+
+        if let response = sendRequest(string: "Dial \(contactName)", using: tcpCli!) {
+            print("Local callback: Recieved \(response) from IP phone.")
+        }
+
     }
     
     private func sendRequest(string: String, using client: TCPClient) -> String? {
@@ -399,7 +407,8 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         
         switch client.send(string: string) {
         case .success:
-            return readResponse(from: client)
+            return string
+            //return readResponse(from: client)
         case .failure( _):
             print("Local callback: Failed to send data.")
             return nil
