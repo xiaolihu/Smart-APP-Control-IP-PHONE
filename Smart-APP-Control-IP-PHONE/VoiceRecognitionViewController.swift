@@ -15,13 +15,18 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
     func startCallName() {
         print("Local callback: Selected to call name - \(selectedContantName).")
         self.heardTextView.text = "\"Call \(selectedContantName)\""
+        self.startCallButton.isHidden = true
+        self.endCallButton.isHidden = false
         self.startDialing(contactName: selectedContantName)
         print("Local callback: Selected to call # - \(selecteTelephonyNumber).")
+
     }
     
     func startCallNumber() {
         print("Local callback: Selected to call name - \(selectedContantName).")
         self.heardTextView.text = "\"Call 9\(selecteTelephonyNumber)\""
+        self.startCallButton.isHidden = true
+        self.endCallButton.isHidden = false
         self.startDialing(contactName: "9" + selecteTelephonyNumber)
         print("Local callback: Selected to call # - \(selecteTelephonyNumber).")
     }
