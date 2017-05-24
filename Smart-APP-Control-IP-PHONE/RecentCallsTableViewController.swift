@@ -24,8 +24,8 @@ class RecentCallsTableViewController: UITableViewController {
         if PersistentUtil.getCallHistory().count > 0 {
             callHistoryList = PersistentUtil.getCallHistory()
         } else {
-            callHistoryList.append(CallHistory(contactName: "Zhaocai Wang", telephonyNumber: "123-456-7890", callTime: Date()))
-            callHistoryList.append(CallHistory(contactName: "Javen Chen", telephonyNumber: "123-456-7891", callTime: Date()))
+            callHistoryList.append(CallHistory(contactName: "Wang Zhaocai", telephonyNumber: "88911495", callTime: Date()))
+            callHistoryList.append(CallHistory(contactName: "Chen Javen", telephonyNumber: "24224131", callTime: Date()))
         }
 //        callHistoryList.removeAll()
 //                PersistentUtil.addCallHistory(callHistory: CallHistory(contactName: "Javen Chen1", telephonyNumber: "123-456-7892", callTime: Date()))

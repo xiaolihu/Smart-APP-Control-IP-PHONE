@@ -25,13 +25,21 @@ class ContactListTableViewController: UITableViewController {
             if arrayOfObjectsUnarchived.count > 0 {
                 contactList = arrayOfObjectsUnarchived
             } else {
-                contactList.append(Contact(contactName: "Zhaocai Wang", telephonyNumber: "123-456-7890"))
-                contactList.append(Contact(contactName: "Javen Chen", telephonyNumber: "123-456-7891"))
+                contactList.append(Contact(contactName: "Wang Zhaocai", telephonyNumber: "88911495"))
+                contactList.append(Contact(contactName: "Wang Chuck", telephonyNumber: "24057839"))
+                contactList.append(Contact(contactName: "Chen Javen", telephonyNumber: "24224131"))
+                contactList.append(Contact(contactName: "Huang Xiaolin", telephonyNumber: "24094344"))
+                contactList.append(Contact(contactName: "Gu Xingcai", telephonyNumber: "24197163"))
+                contactList.append(Contact(contactName: "Liang Xuebin", telephonyNumber: "24197140"))
             }
             print(arrayOfObjectsUnarchived)
         } else {
-            contactList.append(Contact(contactName: "Zhaocai Wang", telephonyNumber: "123-456-7890"))
-            contactList.append(Contact(contactName: "Javen Chen", telephonyNumber: "123-456-7891"))
+            contactList.append(Contact(contactName: "Wang Zhaocai", telephonyNumber: "88911495"))
+            contactList.append(Contact(contactName: "Wang Chuck", telephonyNumber: "24057839"))
+            contactList.append(Contact(contactName: "Chen Javen", telephonyNumber: "24224131"))
+            contactList.append(Contact(contactName: "Huang Xiaolin", telephonyNumber: "24094344"))
+            contactList.append(Contact(contactName: "Gu Xingcai", telephonyNumber: "24197163"))
+            contactList.append(Contact(contactName: "Liang Xuebin", telephonyNumber: "24197140"))
         }
         
         self.navigationItem.title = "Contact List"
