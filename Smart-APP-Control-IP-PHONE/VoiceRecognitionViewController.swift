@@ -363,6 +363,7 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
     @IBAction func endCallAction() {
         self.startCallButton.isHidden = false
         self.endCallButton.isHidden = true
+        self.endIPPhoneCall()
     }
     
     // click disconnIPButton Icon to connect server
@@ -485,6 +486,12 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
 
     }
     
+    private func endIPPhoneCall () {
+        if let response = sendRequest(string: "End Call", using: tcpCli!) {
+            print("Local callback: Recieved \(response) from IP phone.")
+        }
+    }
+
     private func sendRequest(string: String, using client: TCPClient) -> String? {
         print("Local callback: Sending data ... ")
         
