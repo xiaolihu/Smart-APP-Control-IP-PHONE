@@ -12,13 +12,20 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
     
     var selectedContantName = ""
     var selecteTelephonyNumber = ""
-    func startCall() {
+    func startCallName() {
         print("Local callback: Selected to call name - \(selectedContantName).")
         self.heardTextView.text = "\"Call \(selectedContantName)\""
         self.startDialing(contactName: selectedContantName)
         print("Local callback: Selected to call # - \(selecteTelephonyNumber).")
     }
     
+    func startCallNumber() {
+        print("Local callback: Selected to call name - \(selectedContantName).")
+        self.heardTextView.text = "\"Call 9\(selecteTelephonyNumber)\""
+        self.startDialing(contactName: "9" + selecteTelephonyNumber)
+        print("Local callback: Selected to call # - \(selecteTelephonyNumber).")
+    }
+
     var slt = Slt()
     var openEarsEventsObserver = OEEventsObserver()
     var fliteController = OEFliteController()
@@ -62,7 +69,9 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
                                   "Wang Zhaocai",
                                   "Chen Javen",
                                   "Liang Xuebin",
-                                  "Gu Xingcai"]
+                                  "Gu Xingcai",
+                                  "End Call",
+                                  "Dial"]
         
         let ContactName = "ContactName"
         
@@ -148,7 +157,7 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
             print("Local callback: You said - \(contactName).")
         }
         
-        self.heardTextView.text = "\"Call \(hypothesis!)\""
+        self.heardTextView.text = "\"\(hypothesis!)\""
         
         // exclude Xiaolin for he is the caller during demonstration
         if(self.heardTextView.text != "Call Huang Xiaolin") {
@@ -351,10 +360,14 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         let textTrim = labelText?.replacingOccurrences(of: "\"", with: "")
         let contactName = textTrim?.replacingOccurrences(of: "Call ", with: "")
         
-        self.fliteController.say(_:"You are calling \(contactName)", with:self.slt)
-        
         // dail the contact name recognized or corrected one
-        self.startDialing(contactName: contactName!)
+        if (contactName! == "End Call") {
+            self.fliteController.say(_:"You are \(contactName!)", with:self.slt)
+            self.endIPPhoneCall()
+        } else {
+            self.fliteController.say(_:"You are calling \(contactName!)", with:self.slt)
+            self.startDialing(contactName: contactName!)
+        }
         
         // add the contact name into call history list
         self.addRecentContact(contactName: contactName!)
@@ -454,7 +467,7 @@ class VoiceRecognitionViewController: UIViewController, OEEventsObserverDelegate
         var tcpServer: String!
         let port = 40000
         
-        tcpServer = "10.74.37.187"
+        tcpServer = "10.74.37.63"
         tcpCli = TCPClient(address: tcpServer, port: Int32(port))
         switch tcpCli!.connect(timeout: 10) {
         case .success:

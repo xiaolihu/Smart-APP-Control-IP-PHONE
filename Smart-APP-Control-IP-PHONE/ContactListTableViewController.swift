@@ -82,7 +82,7 @@ class ContactListTableViewController: UITableViewController {
         if let vrc = self.navigationController?.viewControllers[0] as? VoiceRecognitionViewController {
             vrc.selectedContantName = selectedContantName
             vrc.selecteTelephonyNumber = selecteTelephonyNumber
-            vrc.startCall()
+            vrc.startCallNumber()
             navigationController?.popViewController(animated: true)
         }
     }
