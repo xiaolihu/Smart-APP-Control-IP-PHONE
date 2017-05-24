@@ -33,12 +33,13 @@
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "AppIcon@2x.png",
+      "filename" : "csd120.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "iphone",
       "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "csd180.png",
       "scale" : "3x"
     }
   ],
